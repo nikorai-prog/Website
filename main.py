@@ -6,7 +6,7 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 # главная страница
 @app.route('/')
-def index():
+def index(): # страница 1
     return render_template('base.html')
 
 
