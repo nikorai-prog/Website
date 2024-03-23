@@ -4,6 +4,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
+# главная страница
 @app.route('/')
 def index():
     return render_template('base.html')
