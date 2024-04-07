@@ -22,6 +22,10 @@
     --penguin-skin: blue;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 li, a, button {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -102,6 +106,13 @@ h1.name{
   }
 }
 
+.card_container {
+    display: inline-block;
+    display: flex;
+    align-items; center;
+    justify-content: space-evenly;
+}
+
 form.login_form {
     margin-left: auto;
     margin-right: auto;
@@ -118,6 +129,7 @@ footer {
     right: 0;
     left: 0;
     bottom: 0;
+    margin-top: auto;
 }
 
 

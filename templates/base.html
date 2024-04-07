@@ -24,11 +24,14 @@
                         <li><a href="#main">Главная</a></li>
                         <li><a href="#production">Продукция</a></li>
                         <li><a href="#service">Услуги</a></li>
+                        <li><a href="#weather">Погода</a></li>
                     {% else %}
-                        <li><a href="/#main">Главная</a></li>
+                        <li><a href="/">Главная</a></li>
                         <li><a href="/#production">Продукция</a></li>
                         <li><a href="/#service">Услуги</a></li>
+                        <li><a href="/#weather">Погода</a></li>
                     {% endif %}
+                    <li><a href="account">Аккаунт</a></li>
                     <li><a href="order"><button>Заказать</button></a></li>
                 </ul>
             </nav>
@@ -38,8 +41,88 @@
             {% block content %}{% endblock %}
         </main>
 
-        <footer>
-            <h3>© 2024 "ТВЕРСКИЕ ОБРЯДЫ"</h3>
+        <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                  <!-- Grid row -->
+                  <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                      <!-- Content -->
+                      <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3">ТВЕРСКИЕ ОБРЯДЫ</i>
+                      </h6>
+                      <p>
+                        Производство товаров и принадлежностей для похорон и оказание ритуальных услуг
+                      </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                      <!-- Links -->
+                      <h6 class="text-uppercase fw-bold mb-4">
+                        Products
+                      </h6>
+                      <p>
+                        <a href="#!" class="text-reset">Angular</a>
+                      </p>
+                      <p>
+                        <a href="#!" class="text-reset">React</a>
+                      </p>
+                      <p>
+                        <a href="#!" class="text-reset">Vue</a>
+                      </p>
+                      <p>
+                        <a href="#!" class="text-reset">Laravel</a>
+                      </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                      <!-- Links -->
+                      <h6 class="text-uppercase fw-bold mb-4">
+                        Useful links
+                      </h6>
+                      <p>
+                        <a href="#!" class="text-reset">Pricing</a>
+                      </p>
+                      <p>
+                        <a href="#!" class="text-reset">Settings</a>
+                      </p>
+                      <p>
+                        <a href="#!" class="text-reset">Orders</a>
+                      </p>
+                      <p>
+                        <a href="#!" class="text-reset">Help</a>
+                      </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                      <!-- Links -->
+                      <h6 class="text-uppercase fw-bold mb-4">Контакты</h6>
+                      <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                      <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        info@example.com
+                      </p>
+                      <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                      <p><i class="fas fa-print me-3"></i><a href="tel:84822584611">8 (4822) 58-46-11</a></p>
+                    </div>
+                    <!-- Grid column -->
+                  </div>
+                  <!-- Grid row -->
+                </div>
+            </section>
+            <h3>&copy <script>document.write(new Date().getFullYear())</script> "ТВЕРСКИЕ ОБРЯДЫ"</h3>
+            <div>
+                <p>"Тверские обряды" - производство товаров и принадлежностей для похорон и оказание ритуальных услуг.</p>
+                <p>Адрес: г.Тверь, ул. Тамары Ильиной, д.14</p>
+                <p>Телефоны: 8 (4822) 58-46-11, 8-980-634-98-76</p>
+            </div>
         </footer>
     </body>
 </html>
