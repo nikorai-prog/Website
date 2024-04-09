@@ -2,82 +2,42 @@
 {% block content %}
     <div>
         <form class="login_form" method="post">
+            <label for="about">Ваши данные</label>
             <input class="form-control" type="text" placeholder="Введите фамилию" name="surname">
             <input class="form-control" type="text" placeholder="Введите имя" name="name">
-            <br>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Введите адрес почты" name="email">
+            <label for="about">Данные поконика</label>
+            <input class="form-control" type="text" placeholder="Введите фамилию " name="surname1">
+            <input class="form-control" type="text" placeholder="Введите имя " name="name1">
+            <input class="form-control" type="text" placeholder="Введите отчество " name="surname1">
+            <input class="form-control" type="text" placeholder="Введите дату рождения" name="dr">
+            <input class="form-control" type="text" placeholder="Введите дату смерти" name="ds">
+            <br>
             <div class="form-group">
-                <label for="classSelect">Какое у вас образование?</label>
-                <select class="form-control" id="classSelect" name="education">
-                  <option>Начальное</option>
-                  <option>Основное общее</option>
-                  <option>Среднее общее</option>
-                  <option>Среднее профессиональное</option>
-                  <option>Высшее</option>
-                </select>
-             </div>
-            <div class="form-group">
-                <label for="form-check">Какие у вас профессии?</label>
+                <label for="form-check">Какие размера плита необходима?</label>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="career"
                   id="researchEngineer" value="researchEngineer">
                   <label class="form-check-label" for="researchEngineer">
-                    Инженер-исследователь
+                    размер 1
                   </label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="pilot" id="pilot"
                   name="career">
                   <label class="form-check-label" for="pilot">
-                    Пилот
+                    размер 2
                   </label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="career" id="builder"
                   value="builder">
                   <label class="form-check-label" for="builder">
-                    Строитель
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="career"
-                  id="exobiologist" value="exobiologist">
-                  <label class="form-check-label" for="exobiologist">
-                    Экзобиолог
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="career" id="doctor"
-                  value="doctor">
-                  <label class="form-check-label" for="doctor">
-                    Врач
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="career"
-                  id="terraformingEngineer" value="terraformingEngineer">
-                  <label class="form-check-label" for="terraformingEngineer">
-                    Инженер по терраформированию
+                    разсер 3
                   </label>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="form-check">Укажите пол</label>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="sex" id="male" value="male"
-                  checked>
-                  <label class="form-check-label" for="male">
-                    Мужской
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="sex" id="female"
-                  value="female">
-                  <label class="form-check-label" for="female">
-                    Женский
-                  </label>
-                </div>
-            </div>
+            <input class="form-control" type="text" placeholder="Введите дату изготовления плиты" name="name">
             <div class="form-group">
                 <label for="about">Комментарий к заказу</label>
                 <textarea class="form-control" id="about" rows="3" name="reason"></textarea>
