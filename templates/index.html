@@ -24,17 +24,17 @@
         <h1>Prod</h1>
     </div>
 
-    <div id="service">
+    <div class="service" id="service">
         <h1>Услуги</h1>
         <ul>
-            <li>Оформление документов</li>
+            <li><h1>Оформление документов</h1>
                 <p>Мы поможем нашим заказчикам оформить необходимые документа для организации похорон умершего человека.</p>
                 <p>Оформление гербового свидетельства о смерти и справки на получение пособия на погребение у нас
                 осуществляется <strong>бесплатно</strong>!</p>
                 <p>Обычно мы готовим эти документы к моменту похорон, тогда наш похоронный агент выдает их родственникам
                     умершего человека непосредственно у морга. Но бывают случаи, когда документы в ЗАГСе готовятся
                     долго. Тогда получить готовые справки можно и после похорон придя к нам в салон ритуальных услуг
-                    "Тверские обряды" по адресу: ул. Тамары Ильиной, д.14.</p>
+                    "Тверские обряды" по адресу: ул. Тамары Ильиной, д.14.</p></li>
             <li>Услуги катафалка</li>
                 <p>Мы оказываем услуги по транспортному сопровождению похорон автомобилем FIAT в котором гроб и другие
                     похоронные принадлежности находятся изолированно от пассажирского салона. Количество посадочных мест
@@ -49,11 +49,20 @@
     <div id="weather">
         <h1>Погода</h1>
         <div class="card_container">
-            <div class="card">1</div>
-            <div class="card">2</div>
-            <div class="card">3</div>
-            <div class="card">4</div>
-            <div class="card">5</div>
+            <div class="card">
+                {% set cur_weather_code = 'img/' + weather_map[weather_info['current']['weather_code']] + '.png' %}
+                <img src="{{ url_for('static', filename=cur_weather_code) }}" alt="?">
+                <h1> {{ date.strftime("%A").capitalize() }}</h1>
+                <h1>{{ weather_info['current']['temperature_2m'] }}&deg;</h1>
+            </div>
+            {% for day in range(1, 5) %}
+            <div class="card">
+                {% set forecast_weather_code = 'img/' + weather_map[weather_info['daily']['weather_code'][day]] + '.png' %}
+                <img src="{{ url_for('static', filename=forecast_weather_code) }}" alt="?">
+                <h1>{{ (date + timedelta(days=day)).strftime("%A").capitalize() }}</h1>
+                <h1>{{ weather_info['daily']['temperature_2m_max'][day] }}&deg;</h1>
+            </div>
+            {% endfor %}
         </div>
     </div>
     <div id="contacts">
@@ -61,9 +70,9 @@
         <p>Салон ритуальных услуг "Тверские обряды"</p>
         <p>Наши координаты:</p>
         <p>Адрес: г.Тверь, ул. Тамары Ильиной, д.14</p>
-        <p>Телефоны: 8 (4822) 58-46-11, 8-980-634-98-76</p>
+        <p>Телефоны: <a class="phone_number" href="tel:84822584611">8 (4822) 58-46-11</a>, <a class="phone_number" href="tel:84822584611">8-980-634-98-76</a></p>
         <p>Факс: 8 (4822) 34-60-66</p>
-        <p>Эл. почта: tverobr@mail.ru</p>
+        <p>Эл. почта: tverobrad@gmail.com</p>
         <p>Проезд до остановки "Бассейн Радуга"</p>
         <p>"Тверские обряды" на карте Твери</p>
     </div>
