@@ -31,8 +31,16 @@
                         <li><a href="/#service">Услуги</a></li>
                         <li><a href="/#weather">Погода</a></li>
                     {% endif %}
-                    <li><a href="account">Аккаунт</a></li>
+                    <li><a href="/login">Аккаунт</a></li>
                     <li><a href="order"><button>Заказать керамику</button></a></li>
+                    {% if current_user.is_authenticated %}
+                        <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
+                    {% else %}
+                        <p>
+                            <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+                            <a class="btn btn-success" href="/login">Войти</a>
+                        </p>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
@@ -62,11 +70,8 @@
                       <!-- Links -->
                       <h6 class="text-uppercase fw-bold mb-4">Контакты</h6>
                       <p><i class="fas fa-home me-3"></i>г.Тверь, ул. Тамары Ильиной, д.14</p>
-                      <p>
-                        <i class="fas fa-envelope me-3"></i>
-                        tverobrad@gmail.com
-                      </p>
-                      <p><i class="fas fa-phone me-3"></i>+ 01 234 567 88</p>
+                      <p><i class="fas fa-envelope me-3"></i>tverobrad@gmail.com</p>
+                      <p><a class="phone_number" href="tel:89806349876">8-980-634-98-76</a></p>
                       <p><a class="phone_number" href="tel:84822584611">8 (4822) 58-46-11</a></p>
                     </div>
                     <!-- Grid column -->

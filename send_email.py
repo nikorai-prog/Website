@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 import ssl
 import smtplib
 
-
 load_dotenv()
 email_sender = os.getenv('EMAIL')
 email_password = os.getenv('PASSWORD')
@@ -12,17 +11,19 @@ email_receiver = os.getenv('EMAIL')
 
 
 # не завершено
-def send_email():
-
-    subject = 'Новое письмо'
-    body = """
-    Не бойтесь. Я проверяю как это работает."""
+def send_email(name, surname, email, image, imagetype):
+    subject = 'Новый заказ'
+    body = f"""
+    Заказчик - {name} {surname}, телефон: phone_number, почта: {email}.
+    Керамика на человека..."""
 
     em = EmailMessage()
     em['From'] = email_sender  # formataddr(('Тверские обряды', email_sender))
     em['To'] = email_receiver
     em['Subject'] = subject
     em.set_content(body)
+    em.add_attachment(image, maintype='image',
+                      subtype=imagetype)
 
     '''em.add_alternative("""\
     <html>
@@ -47,5 +48,5 @@ def send_email():
 
 
 if __name__ == '__main__':
-    send_email()
-
+    pass
+    # send_email()

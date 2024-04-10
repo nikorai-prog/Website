@@ -1,0 +1,55 @@
+{
+  'latitude': 56.875,
+  'longitude': 35.875,
+  'generationtime_ms': 0.06902217864990234,
+  'utc_offset_seconds': 10800,
+  'timezone': 'Europe/Moscow',
+  'timezone_abbreviation': 'MSK',
+  'elevation': 134.0,
+  'current_units': {
+    'time': 'iso8601',
+    'interval': 'seconds',
+    'weather_code': 'wmo code',
+    'temperature_2m': '°C'
+  },
+  'current': {
+    'time': '2024-04-09T23:15',
+    'interval': 900,
+    'weather_code': 2,
+    'temperature_2m': 12.6
+  },
+  'daily_units': {
+    'time': 'iso8601',
+    'weather_code': 'wmo code',
+    'temperature_2m_max': '°C'
+  },
+  'daily': {
+    'time': [
+      '2024-04-09',
+      '2024-04-10',
+      '2024-04-11',
+      '2024-04-12',
+      '2024-04-13',
+      '2024-04-14',
+      '2024-04-15'
+    ],
+    'weather_code': [
+      95,
+      80,
+      3,
+      61,
+      3,
+      61,
+      80
+    ],
+    'temperature_2m_max': [
+      18.5,
+      22.3,
+      16.3,
+      15.1,
+      14.1,
+      12.8,
+      9.7
+    ]
+  }
+}

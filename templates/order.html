@@ -1,50 +1,90 @@
 {% extends "base.html" %}
 {% block content %}
     <div>
-        <form class="login_form" method="post">
-            <label for="about">Ваши данные</label>
+        <form class="login_form" method="post" enctype="multipart/form-data">
+            <label>Ваши данные</label>
             <input class="form-control" type="text" placeholder="Введите фамилию" name="surname">
             <input class="form-control" type="text" placeholder="Введите имя" name="name">
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Введите адрес почты" name="email">
-            <label for="about">Данные поконика</label>
-            <input class="form-control" type="text" placeholder="Введите фамилию " name="surname1">
-            <input class="form-control" type="text" placeholder="Введите имя " name="name1">
-            <input class="form-control" type="text" placeholder="Введите отчество " name="surname1">
-            <input class="form-control" type="text" placeholder="Введите дату рождения" name="dr">
-            <input class="form-control" type="text" placeholder="Введите дату смерти" name="ds">
+            <label>Данные покойного</label>
+            <input class="form-control" type="text" placeholder="Введите фамилию " name="dead_surname">
+            <input class="form-control" type="text" placeholder="Введите имя " name="dead_name">
+            <input class="form-control" type="text" placeholder="Введите отчество " name="dead_middle_name">
+            <input class="form-control" type="date" placeholder="Введите дату рождения (дд.мм.гггг)" name="dead_birth_day">
+            <input class="form-control" type="date" placeholder="Введите дату смерти (дд.мм.гггг)" name="dead_death_day">
             <br>
             <div class="form-group">
+                <input type="radio" id="black_n_white" name="colour" value="black_n_white" checked="checked"/>
+                <label for="black_n_white">Чёрно-белая плитка</label>
+
+                <input type="radio" id="coloured" name="colour" value="coloured" />
+                <label for="coloured">Цветная плитка</label>
+            </div>
+            <div class="form-group">
+                <input type="radio" id="oval" name="shape" value="oval" checked="checked"/>
+                <label for="oval">Овал</label>
+                <div class="form-group">
+                    <label for="classSelect">размер плитки</label>
+                    <select class="form-control" id="classSelect" name="education">
+                        <option>9x12</option>
+                        <option>13x18</option>
+                        <option>17x23</option>
+                        <option>18x24</option>
+                        <option>21x27</option>
+                        <option>26x36</option>
+                    </select>
+                 </div>
+
+                <input type="radio" id="rect" name="shape" value="rect" />
+                <label for="rect">Прямоугольник</label>
+                <div class="form-group">
+                    <label for="classSelect">размер плитки</label>
+                    <select class="form-control" id="classSelect" name="education">
+                        <option>9x12</option>
+                        <option>13x18</option>
+                        <option>18x24</option>
+                        <option>20x30</option>
+                        <option>26x36</option>
+                    </select>
+                 </div>
+            </div>
+            <div class="form-group">
                 <label for="form-check">Какие размера плита необходима?</label>
-                <div class="form-check">
+                <div class="form-check" id="form-check">
                   <input class="form-check-input" type="checkbox" name="career"
                   id="researchEngineer" value="researchEngineer">
                   <label class="form-check-label" for="researchEngineer">
-                    размер 1
+                    9х12
                   </label>
                 </div>
+                <select name="size" id="size">
+                    <option value="9х12">9х12</option>
+                    <option value="13x18">13х18</option>
+                    <option value="17x23">17x23</option>
+                </select>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="pilot" id="pilot"
                   name="career">
                   <label class="form-check-label" for="pilot">
-                    размер 2
+                    13х18
                   </label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="career" id="builder"
                   value="builder">
                   <label class="form-check-label" for="builder">
-                    разсер 3
+                    17x23
                   </label>
                 </div>
             </div>
-            <input class="form-control" type="text" placeholder="Введите дату изготовления плиты" name="name">
+            <input class="form-control" type="date" placeholder="Введите дату изготовления плиты" name="name">
             <div class="form-group">
                 <label for="about">Комментарий к заказу</label>
                 <textarea class="form-control" id="about" rows="3" name="reason"></textarea>
             </div>
             <div class="form-group">
-                <label for="photo">Приложите фотографию</label>
-                <input type="file" class="form-control-file" id="photo" name="file">
+                <label for="photo">Выберите файл</label>
+                <input type="file" class="form-control-file" id="photo" name="file" accept="image/*">
             </div>
             <button type="submit" class="btn btn-primary">Заказать</button>
         </form>

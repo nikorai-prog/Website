@@ -3,14 +3,14 @@ from dotenv import load_dotenv
 import os
 import json
 
-load_dotenv()
+"""load_dotenv()
 API_KEY = os.getenv('API_KEY')
 print(type(API_KEY))
-city = 'Tver'
+city = 'Tver'"""
 
 weather_map = {
 	0: 'sun',
-	1: 'sun',
+	1: 'sun-cloud',
 	2: 'sun-cloud',
 	3: 'cloud',
 	45: 'fog',
@@ -39,7 +39,7 @@ weather_map = {
 	99: 'thunderstorm',
 }
 
-print(weather_map[1])
+# print(weather_map[1])
 #
 # response = requests.get(f'https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={API_KEY}')
 
@@ -51,7 +51,7 @@ params = {
 	"daily": ["weather_code", "temperature_2m_max"],
 	"timezone": "Europe/Moscow"
 }
-round(12.5)
+
 
 def get_weather():
 	response = requests.get(url, params=params)

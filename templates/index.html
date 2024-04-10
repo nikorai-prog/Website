@@ -49,20 +49,30 @@
     <div id="weather">
         <h1>Погода</h1>
         <div class="card_container">
-            <div class="card">
-                {% set cur_weather_code = 'img/' + weather_map[weather_info['current']['weather_code']] + '.png' %}
-                <img src="{{ url_for('static', filename=cur_weather_code) }}" alt="?">
-                <h1> {{ date.strftime("%A").capitalize() }}</h1>
-                <h1>{{ weather_info['current']['temperature_2m'] }}&deg;</h1>
-            </div>
-            {% for day in range(1, 5) %}
-            <div class="card">
-                {% set forecast_weather_code = 'img/' + weather_map[weather_info['daily']['weather_code'][day]] + '.png' %}
-                <img src="{{ url_for('static', filename=forecast_weather_code) }}" alt="?">
-                <h1>{{ (date + timedelta(days=day)).strftime("%A").capitalize() }}</h1>
-                <h1>{{ weather_info['daily']['temperature_2m_max'][day] }}&deg;</h1>
-            </div>
-            {% endfor %}
+            {% if is_weather %}
+                <div class="card">
+                    {% set cur_weather_code = 'img/' + weather_map[weather_info['current']['weather_code']] + '.png' %}
+                    <img src="{{ url_for('static', filename=cur_weather_code) }}" alt="?">
+                    <h1> {{ date.strftime("%A").capitalize() }}</h1>
+                    <h1>{{ round(weather_info['current']['temperature_2m']) }}&deg;</h1>
+                </div>
+                {% for day in range(1, 5) %}
+                <div class="card">
+                    {% set forecast_weather_code = 'img/' + weather_map[weather_info['daily']['weather_code'][day]] + '.png' %}
+                    <img src="{{ url_for('static', filename=forecast_weather_code) }}" alt="?">
+                    <h1>{{ (date + timedelta(days=day)).strftime("%A").capitalize() }}</h1>
+                    <h1>{{ round(weather_info['daily']['temperature_2m_max'][day]) }}&deg;</h1>
+                </div>
+                {% endfor %}
+            {% else %}
+                {% for day in range(5) %}
+                <div class="card">
+                    <img src="{{ url_for('static', filename='img/question.png') }}" alt="?">
+                    <h1>{{ (date + timedelta(days=day)).strftime("%A").capitalize() }}</h1>
+                    <h1>?&deg;</h1>
+                </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
     <div id="contacts">

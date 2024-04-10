@@ -111,7 +111,11 @@ h1.name{
     display: inline-block;
     display: flex;
     align-items; center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+}
+
+.card img {
+    width: 25vh;
 }
 
 main {
@@ -132,11 +136,11 @@ ul {
 }
 
 
-a.phone_number::before {
-    color: #808080;
+a.phone_number:before {
+    color: #0000ff;
 }
 
-a.phone_number::after {
+a.phone_number:after {
     color: #808080;
 }
 
