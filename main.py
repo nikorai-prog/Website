@@ -68,7 +68,7 @@ def order(image=''):
     elif request.method == 'POST':
         f = request.files['file']
         print(f)
-        send_email('Алексей', 'Берим', 'alex@288', f.read(), f.content_type.split('/')[1])
+        #send_email('Алексей', 'Берим', 'alex@288', f.read(), f.content_type.split('/')[1])
         '''with open(request.form['file'], 'rb') as fp:
             img_data = fp.read()
         print(img_data)
