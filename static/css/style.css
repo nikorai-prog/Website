@@ -26,6 +26,17 @@ html {
     scroll-behavior: smooth;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.sticky + main {
+    padding-top: 10vh;
+}
+
 li, a, button {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -125,7 +136,7 @@ main {
 form.login_form {
     margin-left: auto;
     margin-right: auto;
-    max-width: 450px;
+    max-width: 600px;
     background-color: #FFDAB9;
     border: 1px solid gray;
     border-radius: 5px;

@@ -27,7 +27,6 @@ def main():
     app.run(port=8080, host='127.0.0.1')
 
 
-
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
@@ -115,7 +114,7 @@ def reqister():
             print('Такой пользователь уже есть')
             return render_template('register.html', title='Регистрация',
                                    form=form,
-                                   message="Такой пользователь уже есть")
+                                   message="Такой пользователь уже есть", date=datetime.now())
         user = User(
             name=form.name.data,
             email=form.email.data

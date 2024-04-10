@@ -9,8 +9,10 @@
               crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
         <title>Тверские обряды</title>
+
     </head>
     <body>
+
         <header>
             <img class="logo" src="{{ url_for('static', filename='img/website_logo_delete_extra_pixels.png') }}" alt="здесь должна была быть картинка, но не нашлась">
             <h1 class="name">ТВЕРСКИЕ ОБРЯДЫ</h1>
@@ -86,5 +88,24 @@
                 <p>Телефоны: 8 (4822) 58-46-11, 8-980-634-98-76</p>
             </div> -->
         </footer>
+        <script>
+            // When the user scrolls the page, execute myFunction
+            window.onscroll = function() {myFunction()};
+
+            // Get the header
+            var header = document.getElementById("movableHeader");
+
+            // Get the offset position of the navbar
+            var sticky = 300;
+
+            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            function myFunction() {
+              if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+              } else {
+                header.classList.remove("sticky");
+              }
+            }
+        </script>
     </body>
 </html>
