@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
         <title>Тверские обряды</title>
     </head>
-    <div id="#rectangle"></div>
+    <div id="rectangle"></div>
     <body>
         <header>
             <img class="logo" src="{{ url_for('static', filename='img/website_logo_delete_extra_pixels.png') }}" alt="здесь должна была быть картинка, но не нашлась">
@@ -32,8 +32,12 @@
                         <li><a href="/#service">Услуги</a></li>
                         <li><a href="/#weather">Погода</a></li>
                     {% endif %}
+                    {% if current_user.is_authenticated %}
+                    <li><a href="/account">Аккаунт</a></li>
+                    {% else %}
                     <li><a href="/login">Аккаунт</a></li>
-                    <li><a href="order"><button>Заказать керамику</button></a></li>
+                    {% endif %}
+                    <li><a class="btn btn-primary" href="order"><button>Заказать керамику</button></a></li>
                     {% if current_user.is_authenticated %}
                         <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
                     {% else %}
@@ -95,7 +99,7 @@
             var header = document.getElementById("movableHeader");
 
             // Get the offset position of the navbar
-            var sticky = 300;
+            var sticky = header.offsetTop;
 
             // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
             function myFunction() {

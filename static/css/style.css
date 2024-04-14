@@ -1,3 +1,16 @@
+/****************************
+            Цвета
+****************************/
+
+:root {
+    --text-color: #f1f1f1;
+    --footer-bg-color: #253745;
+}
+
+/****************************
+ Установки и импорты шрифтов
+****************************/
+
 @charset "UTF-8"
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500')
 @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Quicksand:wght@700&display=swap')
@@ -10,16 +23,14 @@
     background-color: #000;
 }
 */
-/* color to use */
 
---grey-color: #808080
-:root {
-    --red: 25;
-    --green: 50;
-    --blue: 60;
-    --grey-color: grey;
-    --main-bg-color: #234f1e;
-    --penguin-skin: blue;
+/*
+input {
+    accent-color: #2c7c72;
+}
+*/
+p, li {
+    color: var(--text-color);
 }
 
 html {
@@ -47,8 +58,11 @@ li, a, button {
 
 header {
     /* background-image: url({{ url_for('static', filename='img/chrome_YF0RuQNbcl.jpg') }}); */
-    background-image: url('../img/chrome_YF0RuQNbcl.jpg');
-    background-size: 100% 100%;
+    background-image: url('../img/4fdb79e4-49d7-4f5b-bcec-3288958972cd.jpg');
+    background-size: 100% auto;
+    background-position: center;
+    height: 60vh;
+
     color: #f8f6f0;
     display: flex;
     justify-content: space-between;
@@ -71,12 +85,22 @@ header img {
 body {
     background-image: url('../img/background.jpg');
     background-size: 100% 100%;
+    background-repeat: repeat;
+}
+
+#display_image {
+    width: 375px;
+    height: 211px;
+    border: 2px solid green;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
 }
 
 nav {
     width: 100%;
     display: flex;
-    align-items; center;
+    align-items: center;
     justify-content: space-between;
     /* padding: 0 0; */
 }
@@ -100,12 +124,21 @@ nav ul li a {
 }
 
 h1.name{
+    /*margin: 0;
+    line-height: 1;
+    font-size: 10em;
+    color: transparent;
+    text-transform: uppercase;
+    background-image: linear-gradient(to left, #2ecc71, #3498db, #9b59b6, #f39c12);
+    -webkit-background-clip: text;
+    animation: animate 5s linear infinite;
+    -webkit-background-size: 500%;
+    background-size: 500%;*/
     margin: 0;
     position: static;
     top: 35%;
     left: 20%;
-    background: linear-gradient(90deg, #F9C976, #B5893D, #F9C976, #B5893D, #F9C976);
-    background-size: 400%;
+    background: linear-gradient(135deg, #F9C976, #B5893D, #F9C976, #B5893D);
     font-size: 15vh;
     font-family: "BIZ UDPMincho", sans-serif;
     letter-spacing: 5px;
@@ -115,6 +148,17 @@ h1.name{
     -webkit-background-clip: text;
     animation: animate 10s linear infinite;
 }
+/*@keyframes animate{
+  0% {
+    background-position: 0 100%;
+  }
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
 
 @keyframes animate{
   0% {
@@ -123,13 +167,48 @@ h1.name{
   100% {
     background-position: 100%;
   }
+}*/
+/****************************************
+Услуги
+****************************************/
+.service ul {
+    display: grid;
+    gap: 0.5rem;
 }
 
+.service li {
+    background-color: #bab86c;
+    border: 0.3rem dashed #4a5c6a;
+    border-radius: 3vh;
+}
+/****************************************
+Погода
+****************************************/
 .card_container {
-    display: inline-block;
+    /*display: inline-block;
     display: flex;
     align-items; center;
-    justify-content: space-between;
+    justify-content: space-between;*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 15rem);
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.card {
+    /*background-color: #9ba8ab;*/
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.5rem solid hsl(200, 100%, 10%);
+    border-radius: 1rem;
+    padding: 0.25rem
+}
+
+h1.date {
+    font-size: 2rem;
 }
 
 .card img {
@@ -137,7 +216,7 @@ h1.name{
 }
 
 main {
-    margin: 0 150px 0 150px;
+    margin: 0 1.5em 0 1.5em;
 }
 
 form.login_form {
@@ -154,16 +233,19 @@ ul {
 }
 
 
-a.phone_number:before {
-    color: #0000ff;
-}
-
-a.phone_number:after {
-    color: #808080;
+a.phone_number:hover {
+    color: #00ffff;
+    text-decoration: none;
+    background: linear-gradient(90deg, #F9C976, #B5893D, #F9C976, #B5893D, #F9C976);
+    background-size: 400%;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: animate 10s linear infinite;
 }
 
 footer {
-    background-color: #f0f0f0;
+    weight: 100%;
+    background-color: var(--footer-bg-color);
     position: relative;
     right: 0;
     left: 0;
@@ -178,4 +260,117 @@ h3.footer {
     height: 6vh;
 }
 
+/**************************************
+Предпросмотр фото
+**************************************/
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
 
+.modal-content {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    min-width: 600px;
+    height: 400px;
+    padding: 60px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rbga(0, 0, 0, 0.06);
+}
+
+.modal-content span{
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.modal-content img{
+    display: block;
+    width: auto;
+    height: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rbga(0, 0, 0, 0.06);
+}
+
+.container {
+    display: flex;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 12px 20px;
+    background-color: rgba(0, 0, 139, 1);
+    color: #fff;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: 250ms ease-in-out all;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 139, 0.7);
+    transform: scale(1.05);
+}
+
+button {
+    border: none;
+    margin-left: 14px;
+}
+
+.file, .file-preview {
+    display: flex;
+}
+
+.file input {
+    display: none;
+}
+
+
+.file-preview {
+    align-items: center;
+}
+
+.file-preview p {
+    margin-left: 16px;
+    font-size: 14px;
+}
+
+.file-name {
+    margin-left: 4px;
+}
+
+.inactive {
+    pointer-events: none;
+    background-color: grey;
+}
+
+.display-none {
+    display: none;
+}
+
+/**************************************
+Для утсро
+**************************************/
+
+@media screen and (max-width: 770px) {
+
+}

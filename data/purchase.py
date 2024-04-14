@@ -9,17 +9,23 @@ class Purchase(SqlAlchemyBase):
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
-    name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    id_user = sqlalchemy.Column(sqlalchemy.String, sqlalchemy.ForeignKey('users.id'))
-    id1_user = orm.relationship('User', foreign_keys=[id])
-    colour = sqlalchemy.Column(Boolean, unique=True, default=False)
-    ornament = sqlalchemy.Column(Boolean, unique=True, default=False)
-    made_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
+    id_user = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('users.id'))
+    format = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     surname = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    patronymic = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     birth_day = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     death_day = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
-    comment = sqlalchemy.Column(sqlalchemy.String)
+    ornament = sqlalchemy.Column(Boolean, default=False)
+    # id1_user = orm.relationship('User', foreign_keys=[id])
+    colour = sqlalchemy.Column(Boolean, default=False)
+    shape = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     size = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     deadline = sqlalchemy.Column(sqlalchemy.DateTime)
-    cost = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
-    format = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    comment = sqlalchemy.Column(sqlalchemy.String)
+    made_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)  # дата заказа
+    # cost = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
+    user = orm.relationship('User')
+
+    def __repr__(self):
+        return f'<Order> {self.id} {self.id_user} {self.format}'

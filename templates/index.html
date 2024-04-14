@@ -15,15 +15,16 @@
             а так же и кладбищах области. Так же организуем кремацию в крематориях г. Москвы.
             Оказываем услуги по перевозке тел умерших из дома в морг.</p>
 
-        <p>По телефонам в Твери (4822) 58-46-11, 8(980) 634-98-76 можно получить срочную консультацию по вопросам,
+        <p>По телефонам в Твери <a class="phone_number" href="tel:84822584611">8 (4822) 58-46-11</a>,
+            <a class="phone_number" href="tel:84822584611">8-980-634-98-76</a> можно получить срочную консультацию по вопросам,
             связанным с организацией и проведением  похорон,</p>
 
     </div>
-
+    <!-- Основные товары -->
     <div id="production">
         <h1>Prod</h1>
     </div>
-
+    <!-- Услуги -->
     <div class="service" id="service">
         <h1>Услуги</h1>
         <ul>
@@ -35,32 +36,32 @@
                     умершего человека непосредственно у морга. Но бывают случаи, когда документы в ЗАГСе готовятся
                     долго. Тогда получить готовые справки можно и после похорон придя к нам в салон ритуальных услуг
                     "Тверские обряды" по адресу: ул. Тамары Ильиной, д.14.</p></li>
-            <li>Услуги катафалка</li>
+            <li><h1>Услуги катафалка</h1>
                 <p>Мы оказываем услуги по транспортному сопровождению похорон автомобилем FIAT в котором гроб и другие
                     похоронные принадлежности находятся изолированно от пассажирского салона. Количество посадочных мест
                     от 5 до 8, в зависимости от размера гроба.</p>
                 <p>Если нашим заказчикам необходим автобус большей вместимости, тогда предлагаем микроавтобусы Газель,
                     ПАЗ, Форд, Мерседес.</p>
                 <p>Помимо похорон, мы можем осуществлять доставку ритуальных принадлежностей по адресу заказчика в Твери
-                    и Тверской области.</p>
+                    и Тверской области.</p></li>
         </ul>
     </div>
-
+    <!-- Прогноз погоды -->
     <div id="weather">
         <h1>Погода</h1>
         <div class="card_container">
             {% if is_weather %}
-                <div class="card">
+                <!--<div class="card">
                     {% set cur_weather_code = 'img/' + weather_map[weather_info['current']['weather_code']] + '.png' %}
                     <img src="{{ url_for('static', filename=cur_weather_code) }}" alt="?">
-                    <h1> {{ date.strftime("%A").capitalize() }}</h1>
+                    <h1 class="date"> {{ date.strftime("%A").capitalize() }}</h1>
                     <h1>{{ round(weather_info['current']['temperature_2m']) }}&deg;</h1>
-                </div>
-                {% for day in range(1, 5) %}
+                </div>-->
+                {% for day in range(5) %}
                 <div class="card">
                     {% set forecast_weather_code = 'img/' + weather_map[weather_info['daily']['weather_code'][day]] + '.png' %}
                     <img src="{{ url_for('static', filename=forecast_weather_code) }}" alt="?">
-                    <h1>{{ (date + timedelta(days=day)).strftime("%A").capitalize() }}</h1>
+                    <h1 class="date">{{ (date + timedelta(days=day)).strftime("%A").capitalize() }}</h1>
                     <h1>{{ round(weather_info['daily']['temperature_2m_max'][day]) }}&deg;</h1>
                 </div>
                 {% endfor %}
@@ -68,7 +69,7 @@
                 {% for day in range(5) %}
                 <div class="card">
                     <img src="{{ url_for('static', filename='img/question.png') }}" alt="?">
-                    <h1>{{ (date + timedelta(days=day)).strftime("%A").capitalize() }}</h1>
+                    <h1 class="date">{{ (date + timedelta(days=day)).strftime("%A").capitalize() }}</h1>
                     <h1>?&deg;</h1>
                 </div>
                 {% endfor %}
@@ -85,5 +86,11 @@
         <p>Эл. почта: tverobrad@gmail.com</p>
         <p>Проезд до остановки "Бассейн Радуга"</p>
         <p>"Тверские обряды" на карте Твери</p>
+    </div>
+    <!-- Карта -->
+    <div style="position:relative;overflow:hidden;">
+        <a href="https://yandex.ru/maps/org/tverskiye_obryady/1002885724/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Тверские обряды</a>
+        <a href="https://yandex.ru/maps/14/tver/category/funeral_services/184108367/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Ритуальные услуги в Твери</a>
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=35.925299%2C56.839336&mode=search&oid=1002885724&ol=biz&z=16.62" width="560" height="400" frameborder="1" allowFullscreen style="position:relative;"></iframe>
     </div>
 {% endblock %}
