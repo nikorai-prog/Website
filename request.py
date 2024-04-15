@@ -59,13 +59,3 @@ def get_weather():
 	print(response.content.decode('utf-8'))'''
 	json_response = response.json()
 	return json_response
-
-'''with open('cats.json', 'w', encoding='utf8') as file:
-    json.dump(json_response, file, ensure_ascii=False)'''
-
-'''lst = ['1', '1', '1', '2', '2', '2', '3', '3']
-
-count_max = lst.count(max(lst, key=lambda x: lst.count(x)))
-
-r = list({i for i in lst if lst.count(i) == count_max})
-print(sorted(r))'''

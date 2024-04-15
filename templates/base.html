@@ -3,11 +3,20 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap -->
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               crossorigin="anonymous">
+        <!-- Стиль -->
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+        <!-- Иконки -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <!-- Шрифты -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Rubik:wght@500&display=swap" rel="stylesheet">
+
         <title>Тверские обряды</title>
     </head>
     <div id="rectangle"></div>
@@ -21,23 +30,18 @@
             <nav>
                 <!-- <ul class="nav_links"> -->
                 <ul class="navbar navbar-dark bg-dark">
-                    {% if main %}
-                        <li><a href="#main">Главная</a></li>
-                        <li><a href="#production">Продукция</a></li>
-                        <li><a href="#service">Услуги</a></li>
-                        <li><a href="#weather">Погода</a></li>
-                    {% else %}
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="/#production">Продукция</a></li>
-                        <li><a href="/#service">Услуги</a></li>
-                        <li><a href="/#weather">Погода</a></li>
-                    {% endif %}
+                    <li><a href="{{ '#main' if main else '/' }}" class="logo">ТВЕРСКИЕ ОБРЯДЫ</a></li>
+                    <!-- <li><a href="#main">Главная</a></li> -->
+                    <li><a href="{{ '#production' if main else '/#production' }}"><i class="material-icons">inventory</i> Продукция</a></li>
+                    <li><a href="{{ '#service' if main else '/#service' }}"><i class="material-icons">info</i> Услуги</a></li>
+                    <li><a href="{{ '#weather' if main else '/#weather' }}"><i class="material-icons">cloud</i> Погода</a></li>
                     {% if current_user.is_authenticated %}
-                    <li><a href="/account">Аккаунт</a></li>
+                    <li><a href="/account"><i class="material-icons">person</i> Аккаунт</a></li>
                     {% else %}
-                    <li><a href="/login">Аккаунт</a></li>
+                    <li><a href="/login"><i class="material-icons">person</i> Вход</a></li>
                     {% endif %}
-                    <li><a class="btn btn-primary" href="order"><button>Заказать керамику</button></a></li>
+                    <li><a class="btn btn-info" href="order">Заказать керамику</a></li>
+                    <!--
                     {% if current_user.is_authenticated %}
                         <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
                     {% else %}
@@ -46,14 +50,16 @@
                             <a class="btn btn-success" href="/login">Войти</a>
                         </p>
                     {% endif %}
+                    -->
                 </ul>
             </nav>
         </div>
         <!-- <main role="main" class="container"> -->
+        <!-- Основная часть -->
         <main>
             {% block content %}{% endblock %}
         </main>
-
+        <!-- Footer -->
         <footer class="text-center text-lg-start bg-body-tertiary text-muted">
             <section class="center">
                 <div class="container text-center text-md-start mt-5">
@@ -77,13 +83,14 @@
                       <p><i class="fas fa-home me-3"></i>г.Тверь, ул. Тамары Ильиной, д.14</p>
                       <p><i class="fas fa-envelope me-3"></i>tverobrad@gmail.com</p>
                       <p><a class="phone_number" href="tel:89806349876">8-980-634-98-76</a></p>
-                      <p><a class="phone_number" href="tel:84822584611">8 (4822) 58-46-11</a></p>
+                      <p><strong><a class="phone_number" href="tel:84822584611">8 (4822) 58-46-11</a></strong></p>
                     </div>
                     <!-- Grid column -->
                   </div>
                   <!-- Grid row -->
                 </div>
             </section>
+            <!-- Копирайт -->
             <h3 class="footer">&copy {{ date.year }} "ТВЕРСКИЕ ОБРЯДЫ"</h3>
             <!-- <div>
                 <p>"Тверские обряды" - производство товаров и принадлежностей для похорон и оказание ритуальных услуг.</p>
@@ -91,6 +98,7 @@
                 <p>Телефоны: 8 (4822) 58-46-11, 8-980-634-98-76</p>
             </div> -->
         </footer>
+        <!-- Скрипт для движения header'a -->
         <script>
             // When the user scrolls the page, execute myFunction
             window.onscroll = function() {myFunction()};

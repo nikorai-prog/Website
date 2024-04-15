@@ -2,8 +2,9 @@
 
 {% block content %}
 <h1>Авторизация</h1>
-<h1>{{ ' '.join([current_user.name, current_user.surname]) }}</h1>
+<h1>{{ ' '.join([current_user.surname, current_user.name, current_user.patronymic]) }}</h1>
 {{ current_user.created_date.strftime("%d-%m-%Y") }}
+<a class="btn btn-danger" href="/logout">Выйти</a>
 {% if purchases %}
     <h1>Ваши заказы</h1>
     {% for purchase in purchases %}

@@ -18,7 +18,7 @@ class Purchase(SqlAlchemyBase):
     death_day = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     ornament = sqlalchemy.Column(Boolean, default=False)
     # id1_user = orm.relationship('User', foreign_keys=[id])
-    colour = sqlalchemy.Column(Boolean, default=False)
+    colour = sqlalchemy.Column(sqlalchemy.String, default=False)
     shape = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     size = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     deadline = sqlalchemy.Column(sqlalchemy.DateTime)

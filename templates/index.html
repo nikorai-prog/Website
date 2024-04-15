@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+<!-- Основная страница -->
 {% block content %}
     <div id="main">
         <h1>ОРГАНИЗАЦИЯ ПОХОРОН В ТВЕРИ И ОБЛАСТИ</h1>
@@ -66,6 +67,7 @@
                 </div>
                 {% endfor %}
             {% else %}
+                <!-- Если произошла ошибка и нет доступа к прогнозу погоды -->
                 {% for day in range(5) %}
                 <div class="card">
                     <img src="{{ url_for('static', filename='img/question.png') }}" alt="?">
