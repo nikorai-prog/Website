@@ -20,7 +20,7 @@ def send_email(name, surname, email, image, imagetype):
     Керамика на человека..."""
 
     em = EmailMessage()
-    em['From'] = email_sender  # formataddr(('Тверские обряды', email_sender))
+    em['From'] = email_sender  #  formataddr(('Тверские обряды', email_sender))
     em['To'] = email_receiver
     em['Subject'] = subject
     em.set_content(body)

@@ -6,6 +6,7 @@
 {{ current_user.created_date.strftime("%d-%m-%Y") }}
 <a class="btn btn-danger" href="/logout">Выйти</a>
 {% if purchases %}
+
     <h1>Ваши заказы</h1>
     {% for purchase in purchases %}
     <br> <h2>Заказ номер {{ purchase.id }}</h2>

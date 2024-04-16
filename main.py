@@ -153,7 +153,7 @@ def order():
         return render_template('order.html', main=False, date=datetime.now(), form=form)
     elif request.method == 'POST':
         print(request.files['file'])
-        '''print(request.form.get('name'))
+        """print(request.form.get('name'))
         print(request.form.get('surname'))
         print(request.form.get('patronymic'))
         print(request.form.get('email'))
@@ -170,7 +170,7 @@ def order():
         print(request.form.get('oval_size'))
         print(request.form.get('rect_size'))
         print(request.form.get('deadline'))
-        print(request.form.get('comment'))'''
+        print(request.form.get('comment'))"""
         '''surname = request.form.get('surname')
         name = request.form.get('name')
         patronymic = request.form.get('patronymic')

@@ -99,12 +99,12 @@
         <h1>Погода</h1>
         <div class="card_container">
             {% if is_weather %}
-                <!--<div class="card">
+                <!-- <div class="card">
                     {% set cur_weather_code = 'img/' + weather_map[weather_info['current']['weather_code']] + '.png' %}
                     <img src="{{ url_for('static', filename=cur_weather_code) }}" alt="?">
                     <h1 class="date"> {{ date.strftime("%A").capitalize() }}</h1>
                     <h1>{{ round(weather_info['current']['temperature_2m']) }}&deg;</h1>
-                </div>-->
+                </div> -->
                 {% for day in range(5) %}
                 <div class="card">
                     {% set forecast_weather_code = 'img/' + weather_map[weather_info['daily']['weather_code'][day]] + '.png' %}
