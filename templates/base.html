@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,6 @@
 
         <title>Тверские обряды</title>
     </head>
-    <div id="rectangle"></div>
     <body>
         <header>
             <img class="logo" src="{{ url_for('static', filename='img/website_logo_delete_extra_pixels.png') }}" alt="здесь должна была быть картинка, но не нашлась">
@@ -59,7 +58,56 @@
         <main>
             {% block content %}{% endblock %}
         </main>
+        <!-- Сетка карточек товаров -->
         <!-- Footer -->
+        <div class="cards1">
+            <div class="card1">
+  <!-- Верхняя часть -->
+                  <div class="card1__top">
+    <!-- Изображение-ссылка товара -->
+    <a href="#" class="card1__image">
+      <img
+        src="./img/veno19.png"
+        alt="veno19"
+      />
+    </a>
+    <!-- Скидка на товар -->
+    <div class="card1__label">-10%</div>
+              </div>
+  <!-- Нижняя часть -->
+  <div class="card1__bottom">
+    <!-- Цены на товар (с учетом скидки и без)-->
+    <div class="card1__prices">
+      <div class="card1__price card__price--discount">135 000</div>
+      <div class="card1__price card__price--common">150 000</div>
+    </div>
+    <!-- Ссылка-название товара -->
+    <a href="#" class="card1__title">
+      Usdfsd
+    </a>
+    <!-- Кнопка добавить в корзину -->
+    <button class="card1__add">В корзину</button>
+  </div>
+</div>
+  <div class="card1">
+    <!-- Карточка товара .. -->
+  </div>
+  <div class="card1">
+    <!-- Карточка товара .. -->
+  </div>
+  <div class="card1">
+    <!-- Карточка товара .. -->
+  </div>
+  <div class="card1">
+    <!-- Карточка товара .. -->
+  </div>
+  <div class="card1">
+    <!-- Карточка товара .. -->
+  </div>
+  <div class="card1">
+    <!-- Карточка товара .. -->
+  </div>
+</div>
         <footer class="text-center text-lg-start bg-body-tertiary text-muted">
             <section class="center">
                 <div class="container text-center text-md-start mt-5">
