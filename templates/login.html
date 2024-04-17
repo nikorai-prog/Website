@@ -2,7 +2,8 @@
 
 {% block content %}
     <form class="login_form" action="" method="post">
-        <h1 class="center">Авторизация</h1>
+        <!-- class="center" -->
+        <h1>Авторизация</h1>
         {{ form.hidden_tag() }}
         <!-- <div class="form">
             <input type="text" id="email" class="form__input" autocomplete="on" placeholder=" ">
@@ -17,6 +18,7 @@
                 </div>
             {% endfor %}
         </div>
+        <br>
         <div class="form">
             {{ form.password(class="form__input", type="password",autocomplete="on", placeholder=" ") }}
             {{ form.password.label(class="form__label") }}
@@ -26,6 +28,7 @@
                 </div>
             {% endfor %}
         </div>
+        <br>
         <!-- <p>
             {{ form.email.label }}<br>
             {{ form.email(class="form-control", type="email", placeholder="Почта") }}

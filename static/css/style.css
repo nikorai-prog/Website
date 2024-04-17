@@ -1,17 +1,26 @@
 /****************************\
-    Цвета
+    Основные переменные
 \****************************/
 
 :root {
+    /* Цвета */
     --text-color: #f1f1f1;
     --footer-bg-color: #253745;
 
+    /* Шрифты */
     --main-font: 'Rubik', sans-serif;
     --font1: 'Nunito', sans-serif;
 
 
     --main-font-size: 1.5rem;
     --font1-weight: 600;
+
+    --main-border-radius: 1em;
+
+    --login-form-bg: #436850;
+
+    /* Градиент */
+    --main-gradient: linear-gradient(135deg, #F9C976, #B5893D, #F9C976, #B5893D);
 }
 
 /****************************
@@ -188,10 +197,18 @@ p, li {
     color: var(--text-color);
 }
 
+body {
+     background-color: #289339;
+    /* background: linear-gradient(45deg, #000, #dfd1c5); */
+    /* background-image: url('../img/background.jpg'); */
+    background-size: 100% 100%;
+    background-repeat: repeat;
+    background: linear-gradient(90deg, #4f7942, #72B37E 50%, #4f7942);
+    font-family: var(--font1);
+}
+
 html {
     scroll-behavior: smooth;
-    font-family: var(--font1);
-    font-weight: var(--font1-weight);
 }
 
 .sticky {
@@ -213,7 +230,7 @@ li, a, button {
 
 header {
     /* background-image: url({{ url_for('static', filename='img/chrome_YF0RuQNbcl.jpg') }}); */
-    background-image: url('../img/4fdb79e4-49d7-4f5b-bcec-3288958972cd.jpg');
+    background-image: url('../img/d48cb6c8-087b-4816-a72e-1916966ff833.jpg');
     background-size: 100% auto;
     background-position: center;
     height: 60vh;
@@ -227,16 +244,6 @@ header {
 
 header img {
     width: 120px;
-}
-
-
-
-body {
-     background-color: #289339;
-    /* background: linear-gradient(45deg, #000, #dfd1c5); */
-    /* background-image: url('../img/background.jpg'); */
-    background-size: 100% 100%;
-    background-repeat: repeat;
 }
 
 #display_image {
@@ -346,12 +353,13 @@ main {
 form.login_form {
     margin-left: auto;
     margin-right: auto;
-    max-width: 600px;
-    background-color: #060b23;
+    align-items: center;
+    max-width: 500px;
+    background-color: var(--login-form-bg);
     border: 1px solid gray;
-    border-radius: 5px;
+    border-radius: var(--main-border-radius);
     padding: 10px;
-    box-shadow: 0px 0px 10px 10px lightblue;
+    box-shadow: 0px 0px 10px 10px lightgrey;
 }
 ul {
     list-style: none;
@@ -361,8 +369,8 @@ ul {
 a.phone_number:hover {
     color: #00ffff;
     text-decoration: none;
-    background: linear-gradient(90deg, #F9C976, #B5893D, #F9C976, #B5893D, #F9C976);
-    background-size: 400%;
+    background: var(--main-gradient);
+    /* background: linear-gradient(135deg, #F9C976, #B5893D, #F9C976, #B5893D, #F9C976); */
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     animation: animate 10s linear infinite;
@@ -436,11 +444,11 @@ nav ul li a.logo {
     -webkit-background-size: 500%;
     background-size: 500%;*/
     margin: 0;
-    margin-right: 20vw;
+    margin-right: 5vw;
     position: static;
     top: 35%;
     left: 20%;
-    background: linear-gradient(135deg, #F9C976, #B5893D, #F9C976, #B5893D);
+    background: var(--main-gradient);
     font-size: 1.5rem;
     font-family: var(--main-font);
     letter-spacing: 0.1rem;
@@ -667,6 +675,10 @@ body {
     cursor: text;
     transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
     background-color: #060b23;
+    /* background-color: var(--login-form-bg); */
+  }
+  form.login_form .form__label {
+    background-color: var(--login-form-bg);
   }
 
 /*

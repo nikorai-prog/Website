@@ -40,33 +40,36 @@
                 </p>
             {% endfor %}
         </p>
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(class="form-control", type="email", placeholder="Почта") }}
+        <div class="form">
+            {{ form.email(class="form__input", type="email", autocomplete="on", placeholder=" ") }}
+            {{ form.email.label(class="form__label") }}
             {% for error in form.email.errors %}
-                <p class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     {{ error }}
-                </p>
+                </div>
             {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(class="form-control", type="password", placeholder="Пароль") }}
+        </div>
+        <br>
+        <div class="form">
+            {{ form.password(class="form__input", type="password",autocomplete="on", placeholder=" ") }}
+            {{ form.password.label(class="form__label") }}
             {% for error in form.password.errors %}
-                <p class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     {{ error }}
-                </p>
+                </div>
             {% endfor %}
-        </p>
-        <p>
-        {{ form.password_again.label }}<br>
-        {{ form.password_again(class="form-control", type="password", placeholder="Подтвердите пароль") }}
-        {% for error in form.password_again.errors %}
-            <p class="alert alert-danger" role="alert">
-                {{ error }}
-            </p>
-        {% endfor %}
-        </p>
+        </div>
+        <br>
+        <div class="form">
+            {{ form.password_again(class="form__input", type="password",autocomplete="on", placeholder=" ") }}
+            {{ form.password_again.label(class="form__label") }}
+            {% for error in form.password_again.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </div>
+        <br>
         <p>{{form.submit(type="submit", class="btn btn-primary") }}</p>
         {{message}}
     </form>
