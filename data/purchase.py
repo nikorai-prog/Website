@@ -9,14 +9,14 @@ class Purchase(SqlAlchemyBase):
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
-    id_user = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('users.id'))
+    user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('users.id'))
     format = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     surname = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     patronymic = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     birth_day = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     death_day = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
-    ornament = sqlalchemy.Column(Boolean, default=False)
+    ornament = sqlalchemy.Column(sqlalchemy.String, default=False)
     # id1_user = orm.relationship('User', foreign_keys=[id])
     colour = sqlalchemy.Column(sqlalchemy.String, default=False)
     shape = sqlalchemy.Column(sqlalchemy.String, nullable=True)

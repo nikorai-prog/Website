@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, session
 from data import db_session
 from data.user import User
 from data.purchase import Purchase
-from send_email import send_email, send_order_email, send_confirm_order_email
+from send_email import send_email, send_order_email, send_confirm_order_email, send_confirm_register_email
 
 '''from data.login_form import LoginForm
 from data.register_form import RegisterForm'''
@@ -11,7 +11,7 @@ from data.forms import LoginForm, RegisterForm
 from data.order_form import OrderForm
 from flask_socketio import SocketIO
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
-from datetime import datetime, timedelta, time
+from datetime import datetime, timedelta, time, date
 import locale
 
 locale.setlocale(
@@ -152,7 +152,6 @@ def order():
     if request.method == 'GET':
         return render_template('order.html', main=False, date=datetime.now(), form=form)
     elif request.method == 'POST':
-        print(request.files['file'])
         """print(request.form.get('name'))
         print(request.form.get('surname'))
         print(request.form.get('patronymic'))
@@ -171,7 +170,7 @@ def order():
         print(request.form.get('rect_size'))
         print(request.form.get('deadline'))
         print(request.form.get('comment'))"""
-        '''surname = request.form.get('surname')
+        surname = request.form.get('surname')
         name = request.form.get('name')
         patronymic = request.form.get('patronymic')
         email = request.form.get('email')
@@ -181,8 +180,10 @@ def order():
             dead_surname = request.form.get('dead_surname')
             dead_name = request.form.get('dead_name')
             dead_patronymic = request.form.get('dead_patronymic')
-            dead_birth_day = request.form.get('dead_birth_day')
-            dead_death_day = request.form.get('dead_death_day')
+            print(request.form.get('dead_birth_day'))
+            print(request.form.get('dead_birth_day').split('-'))
+            dead_birth_day = date(*list(int(elem) for elem in request.form.get('dead_birth_day').split('-')))
+            dead_death_day = date(*list(int(elem) for elem in request.form.get('dead_death_day').split('-')))
         else:
             dead_surname = dead_name = dead_patronymic = '-'
             dead_birth_day = dead_death_day = datetime(1, 1, 1)
@@ -196,19 +197,16 @@ def order():
         colour = 'Цветная' if request.form.get('colour') == 'coloured' else 'Черно-белая'
         shape = 'Овал' if request.form.get('shape') == 'oval' else 'Прямоугольник'
         size = request.form.get('oval_size') if shape == 'Овал' else request.form.get('rect_size')
-        deadline = request.form.get('deadline')
+        deadline = date(*list(int(elem) for elem in request.form.get('deadline').split('-')))
         comment = request.form.get('comment')
         if current_user.is_authenticated:
             db_sess = db_session.create_session()
             purchase = Purchase(
                 user_id=current_user.id,
                 format=order_format,
-                surname=surname,
-                name=name,
-                patronymic=patronymic,
-                dead_surname=dead_surname,
-                dead_name=dead_name,
-                dead_patronymic=dead_patronymic,
+                surname=dead_surname,
+                name=dead_name,
+                patronymic=dead_patronymic,
                 birth_day=dead_birth_day,
                 death_day=dead_death_day,
                 ornament=ornament,
@@ -219,11 +217,11 @@ def order():
                 comment=comment
             )
             db_sess.add(purchase)
-            db_sess.commit()'''
-        '''try:
+            db_sess.commit()
+        try:
             send_order_email(surname, name, patronymic, email, phone, order_format, ornament, colour, shape, size,
-                             deadline, dead_surname, dead_name, dead_patronymic, dead_birth_day, dead_death_day,
-                             file.read(), file.content_type.split('/')[1], comment)
+                             deadline, file, dead_surname, dead_name, dead_patronymic, dead_birth_day, dead_death_day,
+                             comment)
         except Exception as e:
             print(e)
             return 'Ошибка при попытке отправить заказ. Попробуйте снова позже.'
@@ -231,13 +229,13 @@ def order():
             try:
                 send_confirm_order_email(surname, name, patronymic, email)
             except Exception:
-                pass'''
+                pass
         #f = request.files['file']
         #print(f.read())
         # f.read()
         # f.content_type.split('/')[1]
-        # send_email('Алексей', 'Берим', 'alex@288', f)
-        print(request.files['file'].read())
+        #send_email('Алексей', 'Берим', 'kolia9038072204@gmail.com', f)
+        #print(request.files['file'].read())
         '''with open(request.form['file'], 'rb') as fp:
             img_data = fp.read()
         print(img_data)'''
@@ -252,7 +250,7 @@ def account():
     if current_user.is_authenticated:
         db_sess = db_session.create_session()
         purchase = db_sess.query(Purchase).filter(
-            (Purchase.id_user == current_user.id)).all()
+            (Purchase.user_id== current_user.id)).all()
         print(type(purchase))
     if request.method == 'GET':
         return render_template('account.html', main=False, date=datetime.now(), purchases=purchase)
@@ -302,6 +300,7 @@ def register():
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
+        send_confirm_register_email(form.surname.data, form.name.data, form.patronymic.data, form.email.data)
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form, date=datetime.now())
 
@@ -334,6 +333,7 @@ def logout():
 # обработчик ошибок
 @app.errorhandler(werkzeug.exceptions.BadRequest)
 def handle_bad_request(e):
+    print(e)
     return render_template('error_handler.html', error=400, error_description='Неправильный запрос'), 400
 
 

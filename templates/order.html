@@ -11,7 +11,7 @@
                 <input class="form-control" type="text" value={{current_user.patronymic}} name="patronymic" readonly>
                 <input type="email" class="form-control" aria-describedby="emailHelp" value={{current_user.email}} name="email" readonly>
                 <label for="phone">Телефон:</label>
-                <input class="form-control" type="tel" placeholder="+7(XXX)-XXX-XXXX" pattern="[+]?[78]{1}\s?\(?[0-9]{3}\)?\s?[\-]?[0-9]{3}[\-]?[0-9]{2}[\-]?[0-9]{2}"  id="phone" name="phone"/>
+                <input class="form-control" type="tel" value={{current_user.phone}} pattern="[+]?[78]{1}\s?\(?[0-9]{3}\)?\s?[\-]?[0-9]{3}[\-]?[0-9]{2}[\-]?[0-9]{2}"  id="phone" name="phone" readonly/>
             {% else %}
                 <input class="form-control" type="text" placeholder="Введите фамилию" name="surname" required>
                 <input class="form-control" type="text" placeholder="Введите имя" name="name" required>
@@ -109,14 +109,13 @@
                  </div>
             </div>
             <label for="deadline">Срок изготовления</label>
-            <input class="form-control" type="date" id="deadline" name="deadline">
+            <input class="form-control" type="date" id="deadline" name="deadline" required>
             <div class="form-group">
                 <label for="comment">Комментарий к заказу</label>
                 <textarea class="form-control" id="comment" rows="3" name="comment" placeholder="Если хотите что-то добавить"></textarea>
             </div>
             <button type="submit" class="btn btn-primary" onclick="validateFileInput()">Заказать</button>
         </form>
-        <p id = "output"> </p>
     </div>
     <script type="text/javascript">
         (function() {
