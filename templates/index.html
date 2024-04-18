@@ -26,102 +26,28 @@
        <p> Продаем деревянные гробы любых размеров, обитых тканью по выбору заказчика (от 3000 руб.) и элитные лакированные гробы (от 10000 руб.).
        </p>
        <div class="catalog-items">
-           <article class="catalog-item">
-                 <div class="catalog-item-image">
-           <img width="218" height="168" src="static/coffins/coffin1.jpg">
-          </div>
-        </article>
-           <article class="catalog-item">
-                 <div class="catalog-item-image">
-           <img width="218" height="168" src="static/coffins/coffin2.png">
-          </div>
-        </article>
-           <article class="catalog-item">
-                 <div class="catalog-item-image">
-           <img width="218" height="168" src="static/coffins/coffin3.png">
-          </div>
-        </article>
-           <article class="catalog-item">
-                 <div class="catalog-item-image">
-           <img width="218" height="168" src="static/coffins/coffin4.png">
-          </div>
-        </article>
-           <article class="catalog-item">
-                 <div class="catalog-item-image">
-           <img width="218" height="168" src="static/coffins/coffin5.png">
-          </div>
-        </article>
-           <article class="catalog-item">
-                 <div class="catalog-item-image">
-           <img width="218" height="168" src="static/coffins/coffin6.png">
-          </div>
-        </article>
-           <article class="catalog-item">
-                 <div class="catalog-item-image">
-           <img width="218" height="168" src="static/coffins/coffin7.png">
-          </div>
-        </article>
-           <article class="catalog-item">
-                 <div class="catalog-item-image">
-           <img width="218" height="168" src="static/coffins/coffin8.png">
-          </div>
-        </article>
-           <article class="catalog-item">
-                 <div class="catalog-item-image">
-           <img width="218" height="168" src="static/coffins/coffin9.png">
-          </div>
-        </article>
-       </div>
+        {% for item in range(2, 10) %}
+            {% set coffin = 'img/coffins/coffin' + str(item) + '.png' %}
+              <article class="catalog-item">
+                <div class="catalog-item-image">
+                  <img width="218" height="168" src="{{ url_for('static', filename=coffin) }}">
+                </div>
+              </article>
+        {% endfor %}
+        </div>
            <h1> Цветы искусственные </h1>
        <p> Широкий выбор искусственных цветов
        </p>
        <div class="catalog-items">
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/flowers/flower.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/flowers/flower1.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/flowers/flower2.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/flowers/flower3.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/flowers/flower4.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/flowers/flower5.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/flowers/flower7.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/flowers/flower8.png">
-    </div>
-  </article>
-   <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/flowers/flower9.png">
-    </div>
-  </article>
-           </div>
+        {% for item in range(1, 10) %}
+            {% set flower = 'img/flowers/flower' + str(item) + '.png' %}
+              <article class="catalog-item">
+                <div class="catalog-item-image">
+                  <img width="218" height="168" src="{{ url_for('static', filename=flower) }}">
+                </div>
+              </article>
+        {% endfor %}
+        </div>
            <h1> Венки </h1>
        <p> Широкий выбор ритуальных венков (от 200 руб.), корзин (от 140 руб.), одиночных цветов (от 4 руб.).
        </p>
@@ -156,34 +82,17 @@
            Образцы изготовления памятников из гранита, мрамора, мраморной крошки
        </p>
        <div class="catalog-items">
-  <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/memorials/memorial1.png">
-    </div>
-  </article>
-  <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/memorials/memorial2.png">
-    </div>
-  </article>
-  <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/memorials/memorial3.png">
-    </div>
-  </article>
-  <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/memorials/memorial4.png">
-    </div>
-  </article>
-           <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/memorials/memorial6.png">
-    </div>
-  </article>
-       </div>
+        {% for item in range(1, 6) %}
+            {% set memorial = 'img/memorials/memorial' + str(item) + '.png' %}
+              <article class="catalog-item-crosses">
+                <div class="catalog-item-image-crosses">
+                  <img width="168" height="218" src="{{ url_for('static', filename=memorial) }}">
+                </div>
+              </article>
+        {% endfor %}
+        </div>
 <h1> Ритуальные ленты </h1>
-       <p> ИИзготавливаем ритуальные ленты для венков и корзин (текст по желанию заказчика).
+       <p> Изготавливаем ритуальные ленты для венков и корзин (текст по желанию заказчика).
 <br>
 Цвет ленты – черный, красный, бордовый.
 <br>
@@ -194,9 +103,24 @@
        <div class="catalog-items">
   <article class="catalog-item">
     <div class="catalog-item-image">
-      <img width="218" height="168" src="static/coffins/len.png">
+      <img width="218" height="168" src="static/img/coffins/len.png">
     </div>
   </article>
+       </div>
+ <h1> Фотокерамика </h1>
+<p> Производим цветную и черно-белую фотокерамику для памятников на основе металлических пластин <br>
+    и овалов, покрытых эмалью (от 400 руб.), а так же портреты на керамограните и фарфоре.<br>
+    На этой странице  представлены не все образцы фотокерамики, которые у нас имеются.
+</p>
+  <div class="catalog-items">
+            {% for item in range(1, 7) %}
+            {% set ceramic = 'img/ceramics/ceramic' + str(item) + '.png' %}
+              <article class="catalog-item-crosses">
+                <div class="catalog-item-image-crosses">
+                  <img width="168" height="218" src="{{ url_for('static', filename=ceramic) }}">
+                </div>
+              </article>
+            {% endfor %}
        </div>
     <!-- Услуги -->
     <div class="service" id="service">
