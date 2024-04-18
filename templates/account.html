@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 
-# страница аккаунта
+<!-- Страница аккаунта -->
 
 {% block content %}
 
-<h1>{{ ' '.join([current_user.surname, current_user.name, current_user.patronymic]) }}</h1>
-{{ current_user.created_date.strftime("%d-%m-%Y") }}
+{% if current_user.patronymic %}
+    <h1>{{ ' '.join([current_user.surname, current_user.name, current_user.patronymic]) }}</h1>
+{% else %}
+    <h1>{{ ' '.join([current_user.surname, current_user.name]) }}</h1>
+{% endif %}
+<p>Телефон: {{ current_user.phone }}</p>
+<p>Телефон: {{ current_user.email }}</p>
+<p>Дата создания: {{ current_user.created_date.strftime("%d-%m-%Y") }}</p>
 <a class="btn btn-danger" href="/logout">Выйти</a>
+
 {% if purchases %}
 
     <h1>Ваши заказы</h1>
