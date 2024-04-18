@@ -109,36 +109,6 @@ body {
 .catalog-item-image img {
   max-width: 100%;
 }
-.catalog-item .title {
-  font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  padding: 0 25px;
-}
-.catalog-item .discount {
-  min-height: 20px;
-  margin-bottom: 10px;
-  color: #000000;
-}
-.catalog-item .price {
-  position: relative;
-  width: 80px;
-  margin: 0 auto 20px;
-  padding: 10px 30px;
-  color: #fff;
-  background: #ee3643;
-  border-radius: 3px;
-}
-.catalog-item .price:after {
-  position: absolute;
-  top: 0;
-  right: -20px;
-  width: 0;
-  height: 0;
-  content: '';
-  border: 20px solid #fff;
-  border-left-color: #ee3643;
-}
 
 p, li {
     color: var(--text-color);
