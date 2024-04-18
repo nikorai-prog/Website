@@ -2,10 +2,9 @@ Flask
 Flask_Login
 flask_socketio
 flask_wtf
-phonenumbers
 python-dotenv
-Requests
-SQLAlchemy
+Requests==2.31.0
+SQLAlchemy==2.0.27
 sqlalchemy_utils
 Werkzeug
 WTForms

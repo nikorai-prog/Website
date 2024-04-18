@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
+# страница аккаунта
+
 {% block content %}
+
 <h1>{{ ' '.join([current_user.surname, current_user.name, current_user.patronymic]) }}</h1>
 {{ current_user.created_date.strftime("%d-%m-%Y") }}
 <a class="btn btn-danger" href="/logout">Выйти</a>
@@ -83,8 +86,8 @@
                     <th scope="col">{{ purchase.format }}</th>
                     <th scope="col">{{ purchase.birth_day }}</th>
                     <th scope="col">{{ purchase.death_day }}</th>
-                    <th scope="col">{{ "Есть" if purchase.ornament else "Нет" }}</th>
-                    <th scope="col">{{ "Цветная" if purchase.colour else "Чёрно-белая" }}</th>
+                    <th scope="col">{{ purchase.ornament }}</th>
+                    <th scope="col">{{ purchase.colour }}</th>
                     <th scope="col">{{ purchase.shape }}</th>
                     <th scope="col">{{ purchase.size }}</th>
                 </tr>

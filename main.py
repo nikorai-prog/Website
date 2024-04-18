@@ -1,27 +1,22 @@
 import werkzeug
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect
 from data import db_session
 from data.user import User
 from data.purchase import Purchase
-from send_email import send_email, send_order_email, send_confirm_order_email, send_confirm_register_email
-
-'''from data.login_form import LoginForm
-from data.register_form import RegisterForm'''
-from data.forms import LoginForm, RegisterForm
-from data.order_form import OrderForm
-from flask_socketio import SocketIO
-from flask_login import LoginManager, login_user, login_required, current_user, logout_user
-from datetime import datetime, timedelta, time, date
-import locale
-
-locale.setlocale(
-    category=locale.LC_ALL,
-    locale="Russian"  # Note: do not use "de_DE" as it doesn't work
-)
+from send_email import send_order_email, send_confirm_order_email, send_confirm_register_email
 from request import get_weather, weather_map
 import json
 import os
 from dotenv import load_dotenv
+from data.forms import LoginForm, RegisterForm
+from flask_login import LoginManager, login_user, login_required, current_user, logout_user
+from datetime import datetime, timedelta, date
+import locale
+
+locale.setlocale(
+    category=locale.LC_ALL,
+    locale="Russian"
+)
 
 load_dotenv()
 app = Flask(__name__)
@@ -29,94 +24,16 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-"""@app.before_request
-def make_session_permanent():
-    session.permanent = False
-
-
-socketio = SocketIO(app)
-
-
-@socketio.on('disconnect')
-def disconnect_user():
-    session.pop('id', None)"""
-
 
 def main():
     db_session.global_init("db/tverobrad.db")
-    '''print(type(User.id))
-    print(type(Purchase.id_user))
-    db_sess = db_session.create_session()
-    user = db_sess.query(User).filter(User.email == 'kolia9038072204@gmail.com').first()
-    print('пассворд', user.check_password('asdds'))
-    user.set_password('asdds')
-    db_sess.commit()
-    print('пассворд', user.check_password('asdds'))'''
     app.run(port=8080, host='127.0.0.1')
-    '''db_sess = db_session.create_session()
-    purchase = Purchase(
-        name='хз',
-        id_user=1,
-        colour=True,
-        ornament=True,
-        surname='фыв',
-        birth_day=11,
-        death_day=12,
-        size=10,
-        cost=1002,
-        format='TP'
-    )
-    db_sess.add(purchase)
-    purchase = Purchase(
-        name='фывфывя',
-        id_user=1,
-        colour=False,
-        ornament=True,
-        surname='фыв',
-        birth_day=1,
-        death_day=2,
-        size=10,
-        cost=1002,
-        format='TP'
-    )
-    db_sess.add(purchase)
-    purchase = Purchase(
-        name='ыыя',
-        id_user=2,
-        colour=True,
-        ornament=False,
-        surname='фыв',
-        birth_day=1,
-        death_day=2,
-        size=10,
-        cost=1002,
-        format='TP'
-    )
-    db_sess.add(purchase)
-    db_sess.commit()'''
-    '''db_sess = db_session.create_session()
-    user = User(
-        name='ник',
-        email='kolia',
-        surname='кфр',
-    )
-    user.set_password('asd123')
-    db_sess.add(user)
-    db_sess.commit()'''
-    '''db_sess = db_session.create_session()
-    user = db_sess.query(User).filter(User.email == 'kolia9038072204@gmail.com').first()
-    print(user.check_password(user.hashed_password))'''
-    # if user and user.check_password('123'):
-    # login_user(user, remember=form.remember_me.data)
-    # return redirect("/")
 
 
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
-    # return db_sess.query(User, int(user_id))
     return db_sess.query(User).get(user_id)
-    # return User.query.get(user_id)
 
 
 # Главная страница
@@ -142,15 +59,14 @@ def index():  # страница 1
         except json.decoder.JSONDecodeError as js_error:
             print('Ошибка при загрузке сохранения json:', js_error)
             is_weather = False
-    return render_template('index.html', main=True, date=datetime.now(), timedelta=timedelta,
-                           weather_info=weather_info, weather_map=weather_map, round=round, is_weather=is_weather)
+    return render_template('index.html', main=True, date=datetime.now(), timedelta=timedelta, weather_info=weather_info,
+                           weather_map=weather_map, round=round, is_weather=is_weather, str=str)
 
 
 @app.route('/order', methods=['POST', 'GET'])
 def order():
-    form = OrderForm()
     if request.method == 'GET':
-        return render_template('order.html', main=False, date=datetime.now(), form=form)
+        return render_template('order.html', main=False, date=datetime.now())
     elif request.method == 'POST':
         """print(request.form.get('name'))
         print(request.form.get('surname'))
@@ -180,8 +96,6 @@ def order():
             dead_surname = request.form.get('dead_surname')
             dead_name = request.form.get('dead_name')
             dead_patronymic = request.form.get('dead_patronymic')
-            print(request.form.get('dead_birth_day'))
-            print(request.form.get('dead_birth_day').split('-'))
             dead_birth_day = date(*list(int(elem) for elem in request.form.get('dead_birth_day').split('-')))
             dead_death_day = date(*list(int(elem) for elem in request.form.get('dead_death_day').split('-')))
         else:
@@ -228,7 +142,8 @@ def order():
         else:
             try:
                 send_confirm_order_email(surname, name, patronymic, email)
-            except Exception:
+            except Exception as e:
+                print(e)
                 pass
         #f = request.files['file']
         #print(f.read())
@@ -250,7 +165,7 @@ def account():
     if current_user.is_authenticated:
         db_sess = db_session.create_session()
         purchase = db_sess.query(Purchase).filter(
-            (Purchase.user_id== current_user.id)).all()
+            (Purchase.user_id == current_user.id)).all()
         print(type(purchase))
     if request.method == 'GET':
         return render_template('account.html', main=False, date=datetime.now(), purchases=purchase)

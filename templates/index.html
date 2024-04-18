@@ -126,88 +126,29 @@
        <p> Широкий выбор ритуальных венков (от 200 руб.), корзин (от 140 руб.), одиночных цветов (от 4 руб.).
        </p>
        <div class="catalog-items">
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath1.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath2.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath3.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath4.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath5.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath6.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath7.png">
-    </div>
-  </article>
-  <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath8.png">
-    </div>
-  </article>
-   <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath9.png">
-    </div>
-  </article>
-           <article class="catalog-item">
-    <div class="catalog-item-image">
-      <img width="218" height="168" src="static/wreaths/wreath10.png">
-    </div>
-  </article>
-</div>
-<h1> Кресты </h1>
+        {% for item in range(1, 11) %}
+            {% set wreath = 'img/wreaths/wreath' + str(item) + '.png' %}
+              <article class="catalog-item">
+                <div class="catalog-item-image">
+                  <img width="218" height="168" src="{{ url_for('static', filename=wreath) }}">
+                </div>
+              </article>
+        {% endfor %}
+        </div>
+    <h1> Кресты </h1>
        <p> Деревянные кресты от 1000 руб.
            <br>
            Металлические кресты от 950 руб.
        </p>
-       <div class="catalog-items">
-  <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/crosses/cross1.png">
-    </div>
-  </article>
-  <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/crosses/cross2.png">
-    </div>
-  </article>
-  <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/crosses/cross3.png">
-    </div>
-  </article>
-  <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/crosses/cross4.png">
-    </div>
-  </article>
-  <article class="catalog-item-crosses">
-    <div class="catalog-item-image-crosses">
-      <img width="168" height="218" src="static/crosses/cross5.png">
-    </div>
-  </article>
+        <div class="catalog-items">
+            {% for item in range(1, 6) %}
+            {% set cross = 'img/crosses/cross' + str(item) + '.png' %}
+              <article class="catalog-item-crosses">
+                <div class="catalog-item-image-crosses">
+                  <img width="168" height="218" src="{{ url_for('static', filename=cross) }}">
+                </div>
+              </article>
+            {% endfor %}
        </div>
     <!-- Услуги -->
     <div class="service" id="service">

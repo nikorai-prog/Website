@@ -11,46 +11,6 @@ EMAIL_PASSWORD = os.getenv('PASSWORD')
 EMAIL_RECEIVER = os.getenv('EMAIL')
 
 
-# не завершено
-def send_email(name, surname, email, image):
-    email_sender, email_password, email_receiver = EMAIL_SENDER, EMAIL_PASSWORD, EMAIL_RECEIVER
-    subject = 'Новый заказ'
-    body = f"""
-    Заказчик - {name} {surname}, телефон: phone_number, почта: {email}.
-    Керамика на человека..."""
-
-    em = EmailMessage()
-    em['From'] = email_sender  # formataddr(('Тверские обряды', email_sender))
-    em['To'] = email_receiver
-    em['Subject'] = subject
-    em.set_content(body)
-    em.add_attachment(image.read(), maintype='image',
-                      subtype=image.content_type.split('/')[1])
-    '''em.add_attachment(image, maintype='image',
-                      subtype=imagetype)'''
-
-    '''em.add_alternative("""\
-    <html>
-      <head></head>
-      <body>
-        <p>Salut!</p>
-        <p>Cela ressemble à un excellent
-            <a href="http://www.yummly.com/recipe/Roasted-Asparagus-Epicurious-203718">
-                recipie
-            </a> déjeuner.
-        </p>
-        <img src="cid:{asparagus_cid}" />
-      </body>
-    </html>
-    """.format(asparagus_cid=asparagus_cid[1:-1]), subtype='html')'''
-
-    context = ssl.create_default_context()
-
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-        smtp.login(email_sender, email_password)
-        smtp.sendmail(email_sender, email_receiver, em.as_string())
-
-
 # заказ
 def send_order_email(surname, name, patronymic, email, phone, order_format, ornament, colour,
                      shape, size, deadline, image, dead_surname=None, dead_name=None, dead_patronymic=None,
@@ -127,7 +87,8 @@ def send_confirm_order_email(surname, name, patronymic, email):
 def send_confirm_register_email(surname, name, patronymic, email):
     email_sender, email_password, email_receiver = EMAIL_SENDER, EMAIL_PASSWORD, email
     subject = 'Добро пожаловать'
-    body = f"Здравствуйте {surname} {name}{' ' + patronymic if patronymic else ''}. Спасибо за регистрацию на нашем сайте."
+    body = f"Здравствуйте {surname} {name}{' ' + patronymic if patronymic else ''}." \
+           f"Спасибо за регистрацию на нашем сайте."
 
     em = EmailMessage()
     em['From'] = formataddr(('Тверские обряды', email_sender))  # formataddr(('Тверские обряды', email_sender))
@@ -140,8 +101,3 @@ def send_confirm_register_email(surname, name, patronymic, email):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
         smtp.login(email_sender, email_password)
         smtp.sendmail(email_sender, email_receiver, em.as_string())
-
-
-if __name__ == '__main__':
-    pass
-    # send_confirm_order_email('Коротеев', 'Николай', 'Сергеевич', 'kolia9038072204@gmail.com')

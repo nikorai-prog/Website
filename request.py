@@ -1,12 +1,5 @@
 import requests
-from dotenv import load_dotenv
-import os
-import json
 
-"""load_dotenv()
-API_KEY = os.getenv('API_KEY')
-print(type(API_KEY))
-city = 'Tver'"""
 
 weather_map = {
 	0: 'sun',
@@ -39,10 +32,6 @@ weather_map = {
 	99: 'thunderstorm',
 }
 
-# print(weather_map[1])
-#
-# response = requests.get(f'https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={API_KEY}')
-
 url = "https://api.open-meteo.com/v1/forecast"
 params = {
 	"latitude": 56.8584,
@@ -55,7 +44,5 @@ params = {
 
 def get_weather():
 	response = requests.get(url, params=params)
-	'''print(response, type(response))
-	print(response.content.decode('utf-8'))'''
 	json_response = response.json()
 	return json_response
