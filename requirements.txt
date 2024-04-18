@@ -1,0 +1,11 @@
+Flask
+Flask_Login
+flask_socketio
+flask_wtf
+phonenumbers
+python-dotenv
+Requests
+SQLAlchemy
+sqlalchemy_utils
+Werkzeug
+WTForms
