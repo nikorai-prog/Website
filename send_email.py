@@ -108,9 +108,7 @@ def send_order_email(surname, name, patronymic, email, phone, order_format, orna
 def send_confirm_order_email(surname, name, patronymic, email):
     email_sender, email_password, email_receiver = EMAIL_SENDER, EMAIL_PASSWORD, email
     subject = 'Ваш заказ принят'
-    body = f"""
-    Здравствуйте {surname} {name}{' ' + patronymic if patronymic else ''}. Ваш заказ был принял.
-    """
+    body = f"Здравствуйте {surname} {name}{' ' + patronymic if patronymic else ''}. Ваш заказ был принял."
 
     em = EmailMessage()
     em['From'] = formataddr(('Тверские обряды', email_sender))  # formataddr(('Тверские обряды', email_sender))
@@ -129,9 +127,7 @@ def send_confirm_order_email(surname, name, patronymic, email):
 def send_confirm_register_email(surname, name, patronymic, email):
     email_sender, email_password, email_receiver = EMAIL_SENDER, EMAIL_PASSWORD, email
     subject = 'Добро пожаловать'
-    body = f"""
-    Здравствуйте {surname} {name}{' ' + patronymic if patronymic else ''}. Спасибо за регистрацию на нашем сайте.
-    """
+    body = f"Здравствуйте {surname} {name}{' ' + patronymic if patronymic else ''}. Спасибо за регистрацию на нашем сайте."
 
     em = EmailMessage()
     em['From'] = formataddr(('Тверские обряды', email_sender))  # formataddr(('Тверские обряды', email_sender))

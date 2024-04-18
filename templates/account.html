@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Авторизация</h1>
 <h1>{{ ' '.join([current_user.surname, current_user.name, current_user.patronymic]) }}</h1>
 {{ current_user.created_date.strftime("%d-%m-%Y") }}
 <a class="btn btn-danger" href="/logout">Выйти</a>
@@ -30,7 +29,7 @@
                     <th scope="col">{{ purchase.format }}</th>
                     <th scope="col">{{ purchase.surname }}</th>
                     <th scope="col">{{ purchase.name }}</th>
-                    <th scope="col">{{ purchase.format }}</th>
+                    <th scope="col">{{ purchase.patronymic if purchase.patronymic else '-' }}</th>
                     <th scope="col">{{ purchase.birth_day }}</th>
                     <th scope="col">{{ purchase.death_day }}</th>
                     <th scope="col">{{ purchase.ornament }}</th>
@@ -54,6 +53,7 @@
                 <tr class="table-active">
                     <th scope="col">{{ purchase.format }}</th>
                     <th scope="col">{{ purchase.ornament }}</th>
+                    <th scope="col">{{ "Цветная" if purchase.colour else "Чёрно-белая" }}</th>
                     <th scope="col">{{ purchase.shape }}</th>
                     <th scope="col">{{ purchase.size }}</th>
                 </tr>

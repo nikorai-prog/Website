@@ -27,6 +27,14 @@
  Установки и импорты шрифтов
 ****************************/
 
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
 @charset "UTF-8"
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500')
 @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Quicksand:wght@700&display=swap')
@@ -367,7 +375,7 @@ nav {
 nav ul {
     list-style: none;
     width: 100%;
-    text-align: right;
+    text-align: center;
     padding-right: 60px;
 }
 
@@ -376,7 +384,7 @@ nav ul li {
     margin: 10px 20px
 }
 
-nav ul li a {
+nav ul li a, nav ul li .dropdown {
     font-family: var(--main-font);
     color: #f8f6f0;
     text-decoration: none;
@@ -645,12 +653,28 @@ reduce the size of the label and move upwards
   left: 0.8rem;
 }
 
+.dropdown {
+    position: center;
+}
 
+.dropdown-content {
+    display: none;
+}
 
-/**************************************
-Для утсро
-**************************************/
+.dropdown-content a {
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/****************************\
+    Для мобильных устройств
+\****************************/
+
 
 @media screen and (max-width: 770px) {
-
-}
+    .movableHeader{
+        display: block;
+    }

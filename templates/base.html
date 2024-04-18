@@ -21,14 +21,14 @@
     </head>
     <body>
         <header>
-            <!--<div>
+            <div style="width: 30%; background-color: rgba(0,0,0,.5);">
                 <h1>ОФОРМЛЕНИЕ ПОХОРОН</h1>
                 <p>услуги автокатафалка, гробы, венки, ленты, покрывала, одежда</p>
                 <p>ФОТО на КЕРАМИКЕ</p>
                 <p>памятники, ограды и многое другое</p>
-            </div> -->
-            <img class="logo" src="{{ url_for('static', filename='img/website_logo_delete_extra_pixels.png') }}" alt="здесь должна была быть картинка, но не нашлась">
-            <h1 class="name">ТВЕРСКИЕ ОБРЯДЫ</h1>
+            </div>
+            <!-- <img class="logo" src="{{ url_for('static', filename='img/website_logo_delete_extra_pixels.png') }}" alt="здесь должна была быть картинка, но не нашлась">
+            <h1 class="name">ТВЕРСКИЕ ОБРЯДЫ</h1> -->
         </header>
         <!-- here is the code of our header -->
         <div class="movableHeader" id="movableHeader">
@@ -36,8 +36,14 @@
                 <!-- <ul class="nav_links"> -->
                 <ul class="navbar navbar-dark bg-dark">
                     <li><a href="{{ '#main' if main else '/' }}" class="logo">ТВЕРСКИЕ ОБРЯДЫ</a></li>
-                    <!-- <li><a href="#main">Главная</a></li> -->
-                    <li><a href="{{ '#production' if main else '/#production' }}"><i class="material-icons">inventory</i> Продукция</a></li>
+                    <li><div class="dropdown">
+                        <i class="material-icons">inventory</i> Продукция
+                        <div class="dropdown-content">
+                            <a href="{{ '#coffins' if main else '/#service' }}">Гробы</a>
+                            <a href="{{ '#flowers' if main else '/#service' }}">Цветы</a>
+                        </div>
+                    </div></li>
+                    <!-- <li><a href="{{ '#production' if main else '/#production' }}"><i class="material-icons">inventory</i> Продукция</a></li> -->
                     <li><a href="{{ '#service' if main else '/#service' }}"><i class="material-icons">info</i> Услуги</a></li>
                     <li><a href="{{ '#weather' if main else '/#weather' }}"><i class="material-icons">cloud</i> Погода</a></li>
                     {% if current_user.is_authenticated %}
@@ -46,16 +52,6 @@
                     <li><a href="/login"><i class="material-icons">person</i> Вход</a></li>
                     {% endif %}
                     <li><a class="btn btn-info" href="order">Заказать керамику</a></li>
-                    <!--
-                    {% if current_user.is_authenticated %}
-                        <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
-                    {% else %}
-                        <p>
-                            <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
-                            <a class="btn btn-success" href="/login">Войти</a>
-                        </p>
-                    {% endif %}
-                    -->
                 </ul>
             </nav>
         </div>
