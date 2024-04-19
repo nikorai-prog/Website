@@ -13,10 +13,7 @@ from flask_login import LoginManager, login_user, login_required, current_user, 
 from datetime import datetime, timedelta, date
 import locale
 
-locale.setlocale(
-    category=locale.LC_ALL,
-    locale="Russian"
-)
+locale.setlocale(locale.LC_ALL, "")
 
 load_dotenv()
 app = Flask(__name__)
