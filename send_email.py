@@ -17,24 +17,22 @@ def send_order_email(surname, name, patronymic, email, phone, order_format, orna
                      birth_day=None, death_day=None, comment=''):
     email_sender, email_password, email_receiver = EMAIL_SENDER, EMAIL_PASSWORD, EMAIL_RECEIVER
     subject = 'Новый заказ'
-    body = f'''
-    Заказчик - {surname} {name}{' ' + patronymic if patronymic else ''}, телефон: {phone}, почта: {email}.
-    Формат - {order_format}.
-    '''
+    body = f'''Заказчик - {surname} {name}{' ' + patronymic if patronymic else ''}, телефон: {phone}, почта: {email}.
+Формат - {order_format}.'''
+
     if 'текст' in order_format.lower():
         body += f'Керамика на человека {dead_surname} {dead_name} {dead_patronymic}.' \
                 f'Годы жизни {birth_day} - {death_day}.'
     body += f'''
-    Орнамент - {ornament}
-    Цвет - {colour}
-    Форма и размер - {shape}, {size}
-    Срок изготовления до {deadline}.
-    '''
+Орнамент - {ornament}
+Цвет - {colour}
+Форма и размер - {shape}, {size}
+Срок изготовления до {deadline.strftime("%d-%m-%Y")}.'''
     if comment:
         body += f'Комментарий: {comment}'
 
     em = EmailMessage()
-    em['From'] = email_sender  # formataddr(('Тверские обряды', email_sender))
+    em['From'] = email_sender
     em['To'] = email_receiver
     em['Subject'] = subject
     em.set_content(body)
@@ -83,7 +81,7 @@ def send_confirm_order_email(surname, name, patronymic, email):
         smtp.sendmail(email_sender, email_receiver, em.as_string())
 
 
-# подтверждение заказа
+# подтверждение регистрации
 def send_confirm_register_email(surname, name, patronymic, email):
     email_sender, email_password, email_receiver = EMAIL_SENDER, EMAIL_PASSWORD, email
     subject = 'Добро пожаловать'

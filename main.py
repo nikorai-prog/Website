@@ -1,5 +1,5 @@
 import werkzeug
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from data import db_session
 from data.user import User
 from data.purchase import Purchase
@@ -142,32 +142,28 @@ def order():
             except Exception as e:
                 print(e)
                 pass
-        #f = request.files['file']
-        #print(f.read())
+        # f = request.files['file']
+        # print(f.read())
         # f.read()
         # f.content_type.split('/')[1]
-        #send_email('Алексей', 'Берим', 'kolia9038072204@gmail.com', f)
-        #print(request.files['file'].read())
+        # send_email('Алексей', 'Берим', 'kolia9038072204@gmail.com', f)
+        # print(request.files['file'].read())
         '''with open(request.form['file'], 'rb') as fp:
             img_data = fp.read()
         print(img_data)'''
         # send_email()
-        return 'Крут'
+        flash('Вы успешно совершили заказ')
+        return redirect('/')
 
 
 # Страница аккаунта
-@app.route('/account', methods=['POST', 'GET'])
+@app.route('/account')
 @login_required
 def account():
-    if current_user.is_authenticated:
-        db_sess = db_session.create_session()
-        purchase = db_sess.query(Purchase).filter(
-            (Purchase.user_id == current_user.id)).all()
-        print(type(purchase))
-    if request.method == 'GET':
-        return render_template('account.html', main=False, date=datetime.now(), purchases=purchase)
-    '''elif request.method == 'POST':
-        send_email()'''
+    db_sess = db_session.create_session()
+    purchase = db_sess.query(Purchase).filter(
+        (Purchase.user_id == current_user.id)).all()
+    return render_template('account.html', main=False, date=datetime.now(), purchases=purchase)
 
 
 # Страница авторизации
@@ -180,6 +176,7 @@ def login():
         user = db_sess.query(User).filter(User.email == form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
+            flash('Вы успешно вошли в аккаунт')
             return redirect("/account")
         return render_template('login.html',
                                message="Неправильный логин или пароль",

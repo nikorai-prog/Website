@@ -4,15 +4,18 @@
 
 {% block content %}
 
-{% if current_user.patronymic %}
-    <h1>{{ ' '.join([current_user.surname, current_user.name, current_user.patronymic]) }}</h1>
-{% else %}
-    <h1>{{ ' '.join([current_user.surname, current_user.name]) }}</h1>
-{% endif %}
-<p>Телефон: {{ current_user.phone }}</p>
-<p>Телефон: {{ current_user.email }}</p>
-<p>Дата создания: {{ current_user.created_date.strftime("%d-%m-%Y") }}</p>
-<a class="btn btn-danger" href="/logout">Выйти</a>
+<div class="account_info" style="display: block;">
+    {% if current_user.patronymic %}
+        <h1>{{ ' '.join([current_user.surname, current_user.name, current_user.patronymic]) }}</h1>
+    {% else %}
+        <h1>{{ ' '.join([current_user.surname, current_user.name]) }}</h1>
+    {% endif %}
+    <p>Телефон: {{ current_user.phone }}</p>
+    <p>Телефон: {{ current_user.email }}</p>
+    <p>Дата создания: {{ current_user.created_date.strftime("%d-%m-%Y") }}</p>
+    <a class="btn btn-danger" href="/logout">Выйти</a>
+</div>
+<br>
 
 {% if purchases %}
 
@@ -103,6 +106,6 @@
     {% endif %}
     {% endfor %}
 {% else %}
-    <p>У вас ещё не было заказов</p>
+    <h1>У вас ещё не было заказов</h1>
 {% endif %}
 {% endblock %}

@@ -1,6 +1,7 @@
 import requests
 
 
+# словарь с кодами погоды
 weather_map = {
 	0: 'sun',
 	1: 'sun-cloud',
@@ -32,6 +33,8 @@ weather_map = {
 	99: 'thunderstorm',
 }
 
+
+# запрос на получение информации о погоде
 url = "https://api.open-meteo.com/v1/forecast"
 params = {
 	"latitude": 56.8584,
@@ -42,6 +45,7 @@ params = {
 }
 
 
+# получение информации о погоде
 def get_weather():
 	response = requests.get(url, params=params)
 	json_response = response.json()

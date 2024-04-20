@@ -4,42 +4,46 @@
     <form class="login_form" action="" method="post">
         <h1>Регистрация</h1>
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.surname.label }}<br>
-            {{ form.surname(class="form-control", type="text", placeholder="Введите фамилию") }}
+        <div class="form">
+            {{ form.surname(class="form__input", type="text", autocomplete="on", placeholder=" ") }}
+            {{ form.surname.label(class="form__label") }}
             {% for error in form.surname.errors %}
-                <p class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     {{ error }}
-                </p>
+                </div>
             {% endfor %}
-        </p>
-        <p>
-            {{ form.name.label }}<br>
-            {{ form.name(class="form-control", type="text", placeholder="Введите имя",) }}
+        </div>
+        <br>
+        <div class="form">
+            {{ form.name(class="form__input", type="text", autocomplete="on", placeholder=" ") }}
+            {{ form.name.label(class="form__label") }}
             {% for error in form.name.errors %}
-                <p class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     {{ error }}
-                </p>
+                </div>
             {% endfor %}
-        </p>
-        <p>
-            {{ form.patronymic.label }}<br>
-            {{ form.patronymic(class="form-control", type="text", placeholder="Введите отчество (если есть)") }}
+        </div>
+        <br>
+        <div class="form">
+            {{ form.patronymic(class="form__input", type="text", autocomplete="on", placeholder=" ") }}
+            {{ form.patronymic.label(class="form__label") }}
             {% for error in form.patronymic.errors %}
-                <p class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     {{ error }}
-                </p>
+                </div>
             {% endfor %}
-        </p>
-        <p>
-            {{ form.phone.label }}<br>
-            {{ form.phone(class="form-control", type="tel", placeholder="+7(XXX)-XXX-XXXX", pattern="[+]?[78]{1}\s?\(?[0-9]{3}\)?\s?[\-]?[0-9]{3}[\-]?[0-9]{2}[\-]?[0-9]{2}") }}
+        </div>
+        <br>
+        <div class="form">
+            {{ form.phone(class="form__input", type="tel", autocomplete="on", placeholder=" ", pattern="[+]?[78]{1}\s?\(?[0-9]{3}\)?\s?[\-]?[0-9]{3}[\-]?[0-9]{2}[\-]?[0-9]{2}") }}
+            {{ form.phone.label(class="form__label") }}
             {% for error in form.phone.errors %}
-                <p class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" role="alert">
                     {{ error }}
-                </p>
+                </div>
             {% endfor %}
-        </p>
+        </div>
+        <br>
         <div class="form">
             {{ form.email(class="form__input", type="email", autocomplete="on", placeholder=" ") }}
             {{ form.email.label(class="form__label") }}
