@@ -25,7 +25,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Rubik:wght@500&display=swap" rel="stylesheet">
 
+        <!-- Иконка сайта -->
+
         <link rel="icon" href="{{ url_for('static', filename='img/logo.ico') }}">
+
+        <!-- Название страницы -->
 
         <title>Тверские обряды</title>
     </head>
@@ -44,8 +48,8 @@
                     Часы работы: <br>
                     рабочие дни с 8 до 19 <br>
                     выходные с 9 до 17 <br>
-                    Телефон: <a class="phone_number" href="tel:84822584611">8 (4822) 58-46-11</a>
-                    <a class="phone_number" href="tel:89806349876">8-980-634-98-76</a> <br>
+                    Телефон: <a class="phone_number light" href="tel:84822584611">8 (4822) 58-46-11</a>
+                    <a class="phone_number light" href="tel:89806349876">8-980-634-98-76</a> <br>
                     Адрес: г.Тверь, ул. Тамары Ильиной, д.14
                 </p>
             </div>
@@ -56,7 +60,7 @@
         <div class="movableHeader" id="movableHeader">
             <nav>
                 <ul class="navbar navbar-dark bg-dark sidebar">
-                    <li onclick=hideSidebar()><a href=""><i class="material-icons">close</i></a></li>
+                    <li onclick=hideSidebar()><a href="javascript:void(0);"><i class="material-icons">close</i></a></li>
                     <li>
                         <div class="dropdown">
                             <i class="material-icons">inventory</i> Продукция
@@ -82,7 +86,6 @@
                 </ul>
             </nav>
             <nav>
-                <!-- <a href="{{ '#main' if main else '/' }}" class="logo">ТВЕРСКИЕ ОБРЯДЫ</a> -->
                 <ul class="navbar navbar-dark bg-dark">
                     <li><a href="{{ '#main' if main else '/' }}" class="logo">ТВЕРСКИЕ ОБРЯДЫ</a></li>
                     <li class="hideOnMobile">
@@ -107,7 +110,7 @@
                     <li class="hideOnMobile"><a href="/login"><i class="material-icons">person</i> Вход</a></li>
                     {% endif %}
                     <li class="hideOnMobile"><a class="btn btn-info" href="order">Заказать керамику</a></li>
-                    <li class="showOnMobile" onclick=showSidebar()><a href="#"><i class="material-icons">menu</i></a></li>
+                    <li class="showOnMobile" onclick=showSidebar()><a href="javascript:void(0);"><i class="material-icons">menu</i></a></li>
                 </ul>
             </nav>
         </div>
@@ -170,24 +173,22 @@
         <!-- Скрипт для движения header'a -->
 
         <script>
-            // When the user scrolls the page, execute myFunction
             window.onscroll = function() {myFunction()};
 
-            // Get the header
             var header = document.getElementById("movableHeader");
 
-            // Get the offset position of the navbar
             var sticky = header.offsetTop;
 
-            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
             function myFunction() {
-              if (window.pageYOffset > sticky) {
-                header.classList.add("sticky");
-              } else {
-                header.classList.remove("sticky");
-              }
+                if (window.pageYOffset > sticky) {
+                    header.classList.add("sticky");
+                } else {
+                    header.classList.remove("sticky");
+                }
             }
         </script>
+
+        <!-- Показ панели быстрого доступа для небольших устройств -->
 
         <script>
             function showSidebar(){

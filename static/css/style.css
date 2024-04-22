@@ -23,6 +23,8 @@
     --main-gradient: linear-gradient(135deg, #F9C976, #B5893D, #F9C976, #B5893D);
 }
 
+/* Установка кодировки (если размещать на переменными, они не наботают) */
+@charset "UTF-8"
 
 html, body {
     width: 100%;
@@ -30,19 +32,6 @@ html, body {
     margin: 0px;
     padding: 0px;
 }
-
-@charset "UTF-8"
-@import url('https://fonts.googleapis.com/css?family=Montserrat:500')
-@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Quicksand:wght@700&display=swap')
-
-/* * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: #4f7942;
-    background-color: #000;
-}
-*/
 
 /****************************\
     Продукция
@@ -158,53 +147,9 @@ header {
     background-color: rgba(0,0,0,.5);
 }
 
-#display_image {
-    width: 375px;
-    height: 211px;
-    border: 2px solid green;
-    background-position: center;
-    font-size: 10em;
-    color: transparent;
-    text-transform: uppercase;
-    background-image: linear-gradient(to left, #2ecc71, #3498db, #9b59b6, #f39c12);
-    -webkit-background-clip: text;
-    animation: animate 5s linear infinite;
-    -webkit-background-size: 500%;
-    background-size: 500%;*/
-    margin: 0;
-    position: static;
-    top: 35%;
-    left: 20%;
-    background: linear-gradient(135deg, #F9C976, #B5893D, #F9C976, #B5893D);
-    font-size: 15vh;
-    font-family: "BIZ UDPMincho", sans-serif;
-    letter-spacing: 5px;
-    font-weight: 600;
-    word-spacing: 5px;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    animation: animate 10s linear infinite;
+.light {
+    color: var(--text-color);
 }
-/*@keyframes animate{
-  0% {
-    background-position: 0 100%;
-  }
-  0% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: 0 100%;
-  }
-}
-
-@keyframes animate{
-  0% {
-    background-position: 0%;
-  }
-  100% {
-    background-position: 100%;
-  }
-}*/
 
 /****************************************
 Услуги
@@ -300,17 +245,6 @@ footer {
     padding: 0.1rem;
 }
 
-rectangle {
-    weight: 100%;
-    z-index 1;
-    background-color: var(--footer-bg-color);
-    position: relative;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: 40px;
-}
-
 h3.footer {
     margin: 0;
     margin-top: auto;
@@ -370,7 +304,7 @@ nav a.logo {
     position: fixed;
     top: 0;
     right: 0;
-    height: auto;
+    height: 100%;
     width: 60%;
     z-index: 100;
     background-color: #343a40;
@@ -388,9 +322,6 @@ nav a.logo {
 .sidebar .btn{
     width: 40%;
 }
-
-    /*margin: 0;
-    line-height: 1;
 
 /**************************************
 Предпросмотр фото
@@ -538,28 +469,6 @@ button {
   background-color: #d9a400;
 }
 
-/*
-body {
-  align-items: center;
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-}
-*/
-/*
-.
-body {
-  font-family: "Convergence", sans-serif;
-  height: 100vh;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  background-color: #060b23;
-}
-*/
-
 /****************************\
 
 \****************************/
@@ -645,7 +554,7 @@ reduce the size of the label and move upwards
 }
 
 /****************************\
-    Для мобильных устройств
+    Для планшетов
 \****************************/
 
 
@@ -657,6 +566,7 @@ reduce the size of the label and move upwards
     .hideOnMobile {
         display: none
     }
+
     header {
         background-position: top;
         height: 51%;
@@ -673,6 +583,10 @@ reduce the size of the label and move upwards
         height: 100%;
     }
 }
+
+/****************************\
+    Для телефонов
+\****************************/
 
 @media screen and (max-width: 400px) {
     .sidebar{

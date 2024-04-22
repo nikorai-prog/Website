@@ -182,6 +182,7 @@ def register():
         db_sess.add(user)
         db_sess.commit()
         send_confirm_register_email(form.surname.data, form.name.data, form.patronymic.data, form.email.data)
+        flash('Вы успешно зарегистрировались')
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form, date=datetime.now())
 

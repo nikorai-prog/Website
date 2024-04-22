@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+
 <!-- Страница заказа керамики -->
+
 {% block content %}
     <div>
         <form class="login_form" method="post" enctype="multipart/form-data">
@@ -36,7 +38,7 @@
             <label>Дата смерти</label>
             <input class="form-control" id="dead_death_day" type="date" placeholder="Введите дату смерти (дд.мм.гггг)" name="dead_death_day" required>
             <br>
-            <h2>Фотограция покойного</h2>
+            <h2>Фотография покойного</h2>
                 <div class="background">
                     <div class="modal display-none">
                         <div class="modal-content">
@@ -106,6 +108,9 @@
             <button type="submit" class="btn btn-primary" onclick="validateFileInput()">Заказать</button>
         </form>
     </div>
+
+    <!-- Проверка наа выбор хотя бы одного типа заказа -->
+
     <script type="text/javascript">
         (function() {
         const form = document.querySelector('#sectionForm');
@@ -137,38 +142,14 @@
             const errorMessage = !isChecked() ? 'Выберите тип заказа' : '';
             file.setCustomValidity(errorMessage);
             firstCheckbox.setCustomValidity(errorMessage);
-            firstCheckbox.setCustomValidity(errorMessage);
-            firstCheckbox.setCustomValidity(errorMessage);
         }
 
         init();
         })();
     </script>
-    <script>
-        function inputDisplay(myCheck,inputId){
-        if(myCheck.checked){
-        document.getElementById(inputId).style.display = 'block';
-        }
-        else{
-        document.getElementById(inputId).style.display = 'none';
-        }
-        }
-    </script>
-    <!--
-    <script>
-        const image_input = document.querySelector("#photo");
-        var uploaded_image = "";
 
-        image_input.addEventListener("change", function(){
-            const reader = new FileReader();
-            reader.addEventListener("load", () => {
-                uploaded_image = reader.result;
-                document.querySelector("#display_image").style.backgroundImage = 'url(${uploaded_image})';
-            });
-            reader.readAsDataURL(this.files[0]);
-        })
-    </script>
-    -->
+    <!-- Предпросмотр изображения -->
+
     <script>
         const file = document.querySelector("#file");
         const fileName = document.querySelector(".file-name");
@@ -192,6 +173,10 @@
             modal.classList.toggle("display-none");
         });
     </script>
+
+    <!-- Включение / отключение необходимости вводить данные или загружать картинку
+        в зависимости от выбора типа заказа -->
+
     <script>
         function enable_text() {
             var check = document.getElementById("text");
@@ -243,45 +228,5 @@
                 btn.removeAttribute("required");
             }
         }
-    </script>
-    <script>
-
-        (function() {
-            var file = document.getElementById("file");
-            var check = document.getElementById("text");
-            const form = document.querySelector('#sectionForm');
-            const checkboxes = form.querySelectorAll('input[type=checkbox]');
-            const checkboxLength = checkboxes.length;
-            const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
-            if (1 == 1) {
-                const errorMessage = !isChecked() ? 'Выберите тип заказа' : '';
-                file.setCustomValidity(errorMessage);
-            } else {
-                const errorMessage = !isChecked() ? 'Выберите тип ' : '';
-                file.setCustomValidity(errorMessage);
-            }
-        })();-->
-        function check_image() {
-            var file = document.getElementById("file");
-            var check = document.getElementById("text");
-            if (1 == 1) {
-                const errorMessage = !isChecked() ? 'Выберите тип заказа' : '';
-                file.setCustomValidity(errorMessage);
-            } else {
-                const errorMessage = !isChecked() ? 'Выберите тип ' : '';
-                file.setCustomValidity(errorMessage);
-            }
-        }
-    </script>
-    <script>
-      let output = document.getElementById("output");
-      function validateFileInput() {
-         let files = $("#file")[0].files.length;
-         if (files != 0) {
-            output.innerHTML += "File is selected! <br/>";
-         } else {
-            output.innerHTML += "Please, select a file!<br>";
-         }
-      }
     </script>
 {% endblock %}

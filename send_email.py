@@ -5,6 +5,7 @@ import ssl
 import smtplib
 from email.utils import formataddr
 
+# подключаемся к .env файлу и берез оттуда почту и пароль для отправки
 load_dotenv()
 EMAIL_SENDER = os.getenv('EMAIL')
 EMAIL_PASSWORD = os.getenv('PASSWORD')
