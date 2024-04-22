@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, redirect, flash
 from data import db_session
 from data.user import User
 from data.purchase import Purchase
-from send_email import send_order_email, send_confirm_order_email, send_confirm_register_email
-from request import get_weather, weather_map
+from files.send_email import send_order_email, send_confirm_order_email, send_confirm_register_email
+from files.request import get_weather, weather_map
 import json
 import os
 from dotenv import load_dotenv
