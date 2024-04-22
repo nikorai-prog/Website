@@ -40,21 +40,6 @@ def send_order_email(surname, name, patronymic, email, phone, order_format, orna
         em.add_attachment(image.read(), maintype='image',
                           subtype=image.content_type.split('/')[1])
 
-    '''em.add_alternative("""\
-    <html>
-      <head></head>
-      <body>
-        <p>Salut!</p>
-        <p>Cela ressemble à un excellent
-            <a href="http://www.yummly.com/recipe/Roasted-Asparagus-Epicurious-203718">
-                recipie
-            </a> déjeuner.
-        </p>
-        <img src="cid:{asparagus_cid}" />
-      </body>
-    </html>
-    """.format(asparagus_cid=asparagus_cid[1:-1]), subtype='html')'''
-
     context = ssl.create_default_context()
 
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
@@ -69,7 +54,7 @@ def send_confirm_order_email(surname, name, patronymic, email):
     body = f"Здравствуйте {surname} {name}{' ' + patronymic if patronymic else ''}. Ваш заказ был принял."
 
     em = EmailMessage()
-    em['From'] = formataddr(('Тверские обряды', email_sender))  # formataddr(('Тверские обряды', email_sender))
+    em['From'] = formataddr(('Тверские обряды', email_sender))
     em['To'] = email_receiver
     em['Subject'] = subject
     em.set_content(body)
@@ -89,7 +74,7 @@ def send_confirm_register_email(surname, name, patronymic, email):
            f"Спасибо за регистрацию на нашем сайте."
 
     em = EmailMessage()
-    em['From'] = formataddr(('Тверские обряды', email_sender))  # formataddr(('Тверские обряды', email_sender))
+    em['From'] = formataddr(('Тверские обряды', email_sender))
     em['To'] = email_receiver
     em['Subject'] = subject
     em.set_content(body)

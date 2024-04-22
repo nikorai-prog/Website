@@ -65,24 +65,6 @@ def order():
     if request.method == 'GET':
         return render_template('order.html', main=False, date=datetime.now())
     elif request.method == 'POST':
-        """print(request.form.get('name'))
-        print(request.form.get('surname'))
-        print(request.form.get('patronymic'))
-        print(request.form.get('email'))
-        print(request.form.get('phone'))
-        print(request.form.get('dead_surname'))
-        print(request.form.get('dead_name'))
-        print(request.form.get('dead_patronymic'))
-        print(request.form.get('dead_birth_day'))
-        print(request.form.get('dead_death_day'))
-        print(request.files['file'])
-        print(request.form.get('ornament'))
-        print(request.form.get('colour'))
-        print(request.form.get('shape'))
-        print(request.form.get('oval_size'))
-        print(request.form.get('rect_size'))
-        print(request.form.get('deadline'))
-        print(request.form.get('comment'))"""
         surname = request.form.get('surname')
         name = request.form.get('name')
         patronymic = request.form.get('patronymic')
@@ -142,16 +124,6 @@ def order():
             except Exception as e:
                 print(e)
                 pass
-        # f = request.files['file']
-        # print(f.read())
-        # f.read()
-        # f.content_type.split('/')[1]
-        # send_email('Алексей', 'Берим', 'kolia9038072204@gmail.com', f)
-        # print(request.files['file'].read())
-        '''with open(request.form['file'], 'rb') as fp:
-            img_data = fp.read()
-        print(img_data)'''
-        # send_email()
         flash('Вы успешно совершили заказ')
         return redirect('/')
 
@@ -163,7 +135,7 @@ def account():
     db_sess = db_session.create_session()
     purchase = db_sess.query(Purchase).filter(
         (Purchase.user_id == current_user.id)).all()
-    return render_template('account.html', main=False, date=datetime.now(), purchases=purchase)
+    return render_template('account.html', main=False, date=datetime.now(), type=type, datetime=datetime.date, purchases=purchase)
 
 
 # Страница авторизации
@@ -212,23 +184,6 @@ def register():
         send_confirm_register_email(form.surname.data, form.name.data, form.patronymic.data, form.email.data)
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form, date=datetime.now())
-
-
-# ТЕСТОВАЯ ЧАСТЬ УДАЛИТЬ
-@app.route('/test', methods=['POST', 'GET'])
-def test():
-    if request.method == 'GET':
-        return render_template('render.html', main=False, date=datetime.now())
-    elif request.method == 'POST':
-        pass
-
-
-@app.route('/test1', methods=['POST', 'GET'])
-def test1():
-    if request.method == 'GET':
-        return render_template('test.html', main=False, date=datetime.now())
-    elif request.method == 'POST':
-        pass
 
 
 # выход из аккаунта

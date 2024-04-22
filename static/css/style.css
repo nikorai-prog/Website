@@ -49,7 +49,7 @@ html, body {
 \****************************/
 
 .catalog-items {
-    width: 1200px;
+    width: 100%;
     margin: 20px auto; /* для оформления демонстрации */
     font-size: 0;
 }
@@ -59,11 +59,10 @@ html, body {
     vertical-align: top;
     font-size: 16px;
     font-weight: 600;
-    width: 218px;
     margin-right: 20px;
     margin-bottom: 20px;
     text-align: center;
-    border: 1px solid #ccc;
+    border: 0.2rem solid grey;
 }
 
 .catalog-item-crosses {
@@ -72,14 +71,10 @@ html, body {
     vertical-align: top;
     font-size: 16px;
     font-weight: 600;
-    width: 168px;
     margin-right: 20px;
     margin-bottom: 20px;
     text-align: center;
-    border: 1px solid #ccc;
-}
-.catalog-item:nth-child(5n) {
-    margin-right: 0;
+    border: 0.2rem solid grey;
 }
 
 .catalog-item .actions {
@@ -143,10 +138,12 @@ li, a, button {
 
 header {
     /* background-image: url({{ url_for('static', filename='img/chrome_YF0RuQNbcl.jpg') }}); */
-    background-image: url('../img/d48cb6c8-087b-4816-a72e-1916966ff833.jpg');
-    background-size: 100% auto;
+    background-color: #343a40;
+    background-image: url('../img/site.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
     background-position: center;
-    height: 60vh;
+    height: 60%;
 
     color: #f8f6f0;
     display: flex;
@@ -155,8 +152,10 @@ header {
     padding: 30px 10%;
 }
 
-header img {
-    width: 120px;
+.header_info {
+    item-aling: center;
+    width: 30%;
+    background-color: rgba(0,0,0,.5);
 }
 
 #display_image {
@@ -216,18 +215,14 @@ header img {
 }
 
 .service li {
-    background-color: #bab86c;
+    background-color: #909387;
+    padding: 1rem;
     border: 0.3rem dashed #4a5c6a;
-    border-radius: 3vh;
+    border-radius: 0.5rem;
 }
 /****************************************
 Погода
 ****************************************/
-/*
-#weather {
-    background: linear-gradient(45deg, #b1ff96, #ffadf7);
-}
-*/
 
 .card_container {
     /*display: inline-block;
@@ -237,7 +232,7 @@ header img {
     display: grid;
     grid-template-columns: repeat(auto-fit, 15rem);
     gap: 0.5rem;
-    justify-content: center;
+    justify-content: space-around;
     padding: 1rem;
 }
 
@@ -279,6 +274,11 @@ ul {
     list-style: none;
 }
 
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 
 a.phone_number:hover {
     color: #00ffff;
@@ -290,14 +290,14 @@ a.phone_number:hover {
     animation: animate 10s linear infinite;
 }
 footer {
-    weight: 100%;
+    width: 100%;
     background-color: var(--footer-bg-color);
     position: relative;
     right: 0;
     left: 0;
     bottom: 0;
     margin: 0;
-    margin-top: auto;
+    padding: 0.1rem;
 }
 
 rectangle {
@@ -325,6 +325,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #343a40;
     /* padding: 0 0; */
 }
 
@@ -346,17 +347,8 @@ nav ul li a, nav ul li .dropdown {
     text-decoration: none;
 }
 
-nav ul li a.logo {
-    /*margin: 0;
-    line-height: 1;
-    font-size: 10em;
-    color: transparent;
-    text-transform: uppercase;
-    background-image: linear-gradient(to left, #2ecc71, #3498db, #9b59b6, #f39c12);
-    -webkit-background-clip: text;
-    animation: animate 5s linear infinite;
-    -webkit-background-size: 500%;
-    background-size: 500%;*/
+nav a.logo {
+    float: left;
     margin: 0;
     margin-right: 5vw;
     position: static;
@@ -371,6 +363,30 @@ nav ul li a.logo {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     animation: animate 10s linear infinite;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: auto;
+    width: 60%;
+    z-index: 100;
+    background-color: #343a40;
+    box-shadow: -10px 0 10px rbga(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li, .sidebar a, .sidebar div{
+    width: 100%;
+}
+
+.sidebar .btn{
+    width: 40%;
 }
 
     /*margin: 0;
@@ -436,31 +452,30 @@ nav ul li a.logo {
     margin: 0 auto;
 }
 
-/*
-.btn {
+
+.btn_preview {
     cursor: pointer;
     padding: 12px 20px;
-    background-color: rgba(0, 0, 139, 1);
+    background-color: rgb(127, 180, 250);
     color: #fff;
     border-radius: 12px;
     font-size: 14px;
     transition: 250ms ease-in-out all;
 }
 
-.btn:focus {
+.btn_preview:focus {
     outline: none;
 }
 
-.btn:hover {
-    background-color: rgba(0, 0, 139, 0.7);
+.btn_preview:hover {
+    background-color: rgba(100, 100, 250, 0.7);
     transform: scale(1.05);
 }
 
 button {
     border: none;
-    margin-left: 14px;
 }
-*/
+
 
 .file, .file-preview {
     display: flex;
@@ -625,12 +640,42 @@ reduce the size of the label and move upwards
     display: block;
 }
 
+.showOnMobile {
+    display: none;
+}
+
 /****************************\
     Для мобильных устройств
 \****************************/
 
 
-@media screen and (max-width: 770px) {
-    .movableHeader{
-        display: block;
+@media screen and (max-width: 800px) {
+    .showOnMobile {
+        display: flex;
     }
+
+    .hideOnMobile {
+        display: none
+    }
+    header {
+        background-position: top;
+        height: 51%;
+        display: flex;
+        flex-direction: column
+    }
+
+    .header_info {
+        width: 100%;
+        height: 1000px;
+    }
+
+    .navbar {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar{
+        width: 100%;
+    }
+}

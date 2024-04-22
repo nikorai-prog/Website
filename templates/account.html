@@ -12,7 +12,7 @@
     {% endif %}
     <p>Телефон: {{ current_user.phone }}</p>
     <p>Телефон: {{ current_user.email }}</p>
-    <p>Дата создания: {{ current_user.created_date.strftime("%d-%m-%Y") }}</p>
+    <p>Дата создания аккаунта: {{ current_user.created_date.strftime("%d-%m-%Y") }}</p>
     <a class="btn btn-danger" href="/logout">Выйти</a>
 </div>
 <br>
@@ -21,88 +21,94 @@
 
     <h1>Ваши заказы</h1>
     {% for purchase in purchases %}
-    <br> <h2>Заказ номер {{ purchase.id }}</h2>
+    <br><h2>Заказ номер {{ purchase.id }}</h2>
     {% if purchase.format == "Текст" %}
-        <table class="table">
-            <thead class="table-light">
-                <tr>
-                    <th scope="col">Тип</th>
-                    <th scope="col">Фамилия</th>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Отчество</th>
-                    <th scope="col">Дата рождения</th>
-                    <th scope="col">Дата смерти</th>
-                    <th scope="col">Орнамент</th>
-                    <th scope="col">Форма</th>
-                    <th scope="col">Размер</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-active">
-                    <th scope="col">{{ purchase.format }}</th>
-                    <th scope="col">{{ purchase.surname }}</th>
-                    <th scope="col">{{ purchase.name }}</th>
-                    <th scope="col">{{ purchase.patronymic if purchase.patronymic else '-' }}</th>
-                    <th scope="col">{{ purchase.birth_day }}</th>
-                    <th scope="col">{{ purchase.death_day }}</th>
-                    <th scope="col">{{ purchase.ornament }}</th>
-                    <th scope="col">{{ purchase.shape }}</th>
-                    <th scope="col">{{ purchase.size }}</th>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="table">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Тип</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Отчество</th>
+                        <th scope="col">Дата рождения</th>
+                        <th scope="col">Дата смерти</th>
+                        <th scope="col">Орнамент</th>
+                        <th scope="col">Форма</th>
+                        <th scope="col">Размер</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-active">
+                        <th scope="col">{{ purchase.format }}</th>
+                        <th scope="col">{{ purchase.surname }}</th>
+                        <th scope="col">{{ purchase.name }}</th>
+                        <th scope="col">{{ purchase.patronymic if purchase.patronymic else '-' }}</th>
+                        <th scope="col">{{ purchase.birth_day.strftime("%d-%m-%Y") }}</th>
+                        <th scope="col">{{ purchase.death_day.strftime("%d-%m-%Y") }}</th>
+                        <th scope="col">{{ purchase.ornament }}</th>
+                        <th scope="col">{{ purchase.shape }}</th>
+                        <th scope="col">{{ purchase.size }}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     {% elif purchase.format == "Картинка" %}
-        <table class="table">
-            <thead class="table-light">
-                <tr>
-                    <th scope="col">Тип</th>
-                    <th scope="col">Орнамент</th>
-                    <th scope="col">Цвет</th>
-                    <th scope="col">Форма</th>
-                    <th scope="col">Размер</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-active">
-                    <th scope="col">{{ purchase.format }}</th>
-                    <th scope="col">{{ purchase.ornament }}</th>
-                    <th scope="col">{{ "Цветная" if purchase.colour else "Чёрно-белая" }}</th>
-                    <th scope="col">{{ purchase.shape }}</th>
-                    <th scope="col">{{ purchase.size }}</th>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="table">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Тип</th>
+                        <th scope="col">Орнамент</th>
+                        <th scope="col">Цвет</th>
+                        <th scope="col">Форма</th>
+                        <th scope="col">Размер</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-active">
+                        <th scope="col">{{ purchase.format }}</th>
+                        <th scope="col">{{ purchase.ornament }}</th>
+                        <th scope="col">{{ "Цветная" if purchase.colour else "Чёрно-белая" }}</th>
+                        <th scope="col">{{ purchase.shape }}</th>
+                        <th scope="col">{{ purchase.size }}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     {% else %}
-        <table class="table">
-            <thead class="table-light">
-                <tr>
-                    <th scope="col">Тип</th>
-                    <th scope="col">Фамилия</th>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Отчество</th>
-                    <th scope="col">Дата рождения</th>
-                    <th scope="col">Дата смерти</th>
-                    <th scope="col">Орнамент</th>
-                    <th scope="col">Цвет</th>
-                    <th scope="col">Форма</th>
-                    <th scope="col">Размер</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-active">
-                    <th scope="col">{{ purchase.format }}</th>
-                    <th scope="col">{{ purchase.surname }}</th>
-                    <th scope="col">{{ purchase.name }}</th>
-                    <th scope="col">{{ purchase.format }}</th>
-                    <th scope="col">{{ purchase.birth_day }}</th>
-                    <th scope="col">{{ purchase.death_day }}</th>
-                    <th scope="col">{{ purchase.ornament }}</th>
-                    <th scope="col">{{ purchase.colour }}</th>
-                    <th scope="col">{{ purchase.shape }}</th>
-                    <th scope="col">{{ purchase.size }}</th>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="table">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Тип</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Отчество</th>
+                        <th scope="col">Дата рождения</th>
+                        <th scope="col">Дата смерти</th>
+                        <th scope="col">Орнамент</th>
+                        <th scope="col">Цвет</th>
+                        <th scope="col">Форма</th>
+                        <th scope="col">Размер</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-success">
+                        <th scope="col">{{ purchase.format }}</th>
+                        <th scope="col">{{ purchase.surname }}</th>
+                        <th scope="col">{{ purchase.name }}</th>
+                        <th scope="col">{{ purchase.patronymic if purchase.patronymic else '-' }}</th>
+                        <th scope="col">{{ purchase.birth_day.strftime("%d-%m-%Y") }}</th>
+                        <th scope="col">{{ purchase.death_day.strftime("%d-%m-%Y") }}</th>
+                        <th scope="col">{{ purchase.ornament }}</th>
+                        <th scope="col">{{ purchase.colour }}</th>
+                        <th scope="col">{{ purchase.shape }}</th>
+                        <th scope="col">{{ purchase.size }}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     {% endif %}
     {% endfor %}
 {% else %}

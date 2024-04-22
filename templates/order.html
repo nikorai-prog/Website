@@ -37,38 +37,27 @@
             <input class="form-control" id="dead_death_day" type="date" placeholder="Введите дату смерти (дд.мм.гггг)" name="dead_death_day" required>
             <br>
             <h2>Фотограция покойного</h2>
-            <!--
-            <div class="form-group">
-                <label for="photo">Выберите файл</label>
-                <input type="file" class="form-control-file" id="photo" name="file" accept=".png, .jpg, .jpeg">
-                <div id="display_image"></div>
-            </div>
-            -->
-            <div class="background">
-                <div class="modal display-none">
-                    <div class="modal-content">
-                        <!-- <span class="close">X</span> -->
-                        <i class="material-icons close" style="vertical-align: bottom;">cancel</i>
-                        <img class="photo-preview" src="" alt="">
+                <div class="background">
+                    <div class="modal display-none">
+                        <div class="modal-content">
+                            <i class="material-icons close" style="vertical-align: bottom;">cancel</i>
+                            <img class="photo-preview" src="" alt="">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="image_container">
-                <!-- <div class="file">
-                    <label class="btn btn-primary" id="label" for="file">Upload Photo</label>
-                    <input type="file"  id="file" name="file" accept=".png,.jpg,.jpeg">
-                </div> -->
-                <div class="upload">
-                  <button type = "button" class = "btn-warning">
-                    <i class = "fa fa-upload"></i> Upload File
-                    <input type="file" id="file" name="file" accept=".png,.jpg,.jpeg" required>
-                  </button>
+                <div class="image_container">
+                    <div class="upload">
+                      <button type = "button" class = "btn-warning">
+                        <i class = "fa fa-upload"></i> Загрузить файл
+                        <input type="file" id="file" name="file" accept=".png,.jpg,.jpeg" required>
+                      </button>
+                    </div>
+                    <br>
+                    <div class="file-preview" style="margin-left: 5px;">
+                        <button type="button" id="button_preview" class="btn_preview preview inactive">Просмотр</button>
+                        <p>File:<span class="file-name"></span></p>
+                    </div>
                 </div>
-                <div class="file-preview">
-                    <button type="button" id="button_preview" class="btn preview inactive">Preview</button>
-                    <p>File:<span class="file-name"></span></p>
-                </div>
-            </div>
             <h2>Керамика</h2>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="ornament" name="ornament" checked/>
