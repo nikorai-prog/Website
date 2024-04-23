@@ -135,7 +135,8 @@ def account():
     db_sess = db_session.create_session()
     purchase = db_sess.query(Purchase).filter(
         (Purchase.user_id == current_user.id)).all()
-    return render_template('account.html', main=False, date=datetime.now(), type=type, datetime=datetime.date, purchases=purchase)
+    return render_template('account.html', main=False, date=datetime.now(), type=type, datetime=datetime.date,
+                           purchases=purchase)
 
 
 # Страница авторизации
@@ -196,6 +197,12 @@ def logout():
 
 
 # обработчик ошибок
+@app.errorhandler(werkzeug.exceptions.InternalServerError)
+def handle_bad_request(e):
+    print(e)
+    return render_template('error_handler.html', error=500, error_description='Ошибка сервера'), 500
+
+
 @app.errorhandler(werkzeug.exceptions.BadRequest)
 def handle_bad_request(e):
     print(e)
@@ -204,14 +211,15 @@ def handle_bad_request(e):
 
 @app.errorhandler(401)
 def unauthorised(e):
+    print(e)
     return render_template('error_handler.html', error=401, error_description='Не зарегистрирован'), 401
 
 
 @app.errorhandler(404)
 def page_not_found(e):
+    print(e)
     return render_template('error_handler.html', error=404, error_description='Страница не найдена'), 404
 
 
 if __name__ == '__main__':
     main()
-    # app.run(port=8080, host='127.0.0.1')
