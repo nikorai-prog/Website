@@ -52,3 +52,4 @@
 3. [Сайт](https://colorhunt.co/) для подбора цветов
 
 ### Презентация проекта [тут](https://docs.google.com/presentation/d/1wmu2yk5QszBuySNvKQ8GcRPybSsJQ8iocE2KcEN-wZM/edit#slide=id.g2cd9986e685_2_6)
+### [Ссылка на сайт](https://nikorai.pythonanywhere.com/)
