@@ -35,10 +35,10 @@
         <p>
            Продаем деревянные гробы любых размеров, обитых тканью по выбору заказчика (от 3000 руб.) и элитные лакированные гробы (от 10000 руб.).
         </p>
-        <div class="catalog-items">
+        <div class="catalog-items"> <!-- сетка товаров -->
             {% for item in range(2, 10) %}
             {% set coffin = 'img/coffins/coffin' + str(item) + '.png' %}
-            <article class="catalog-item">
+            <article class="catalog-item"> <!-- добавление карточки товара -->
                 <div class="catalog-item-image">
                     <img width="218" height="168" src="{{ url_for('static', filename=coffin) }}">
                 </div>

@@ -48,11 +48,13 @@ html, body {
     Продукция
 \****************************/
 
+/* сетка товаров*/
 .catalog-items {
     width: 100%;
     margin: 20px auto; /* для оформления демонстрации */
     font-size: 0;
 }
+/* карточка товара */
 .catalog-item {
     position: relative;
     display: inline-block;
@@ -64,7 +66,7 @@ html, body {
     text-align: center;
     border: 0.2rem solid grey;
 }
-
+/* для пямятников и крестов (с измененными размерами)*/
 .catalog-item-crosses {
     position: relative;
     display: inline-block;
@@ -77,16 +79,7 @@ html, body {
     border: 0.2rem solid grey;
 }
 
-.catalog-item .actions {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 218px;
-    height: 88px;
-    padding: 40px 0;
-    background-color: #fff;
-}
-
+/* подстановка картинки*/
 .catalog-item-image {
     width: 218px;
     height: 168px;
