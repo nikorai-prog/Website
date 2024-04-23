@@ -48,6 +48,9 @@
    - flask
    - requests
    - sqalchemy
+   - werkzeug
+   - email
+   - dotenv
 2. [Сайт](https://tverritual.ru/exhumation/) конкурентов, взятый как пример
 3. [Сайт](https://colorhunt.co/) для подбора цветов
 
