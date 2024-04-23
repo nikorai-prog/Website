@@ -11,16 +11,18 @@ class Purchase(SqlAlchemyBase):
                            primary_key=True, autoincrement=True)
     user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('users.id'))
     format = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    # данные о покойнике
     surname = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     patronymic = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     birth_day = sqlalchemy.Column(sqlalchemy.Date, nullable=True)
     death_day = sqlalchemy.Column(sqlalchemy.Date, nullable=True)
-    ornament = sqlalchemy.Column(sqlalchemy.String, default=False)
+    # данные о заказе
+    ornament = sqlalchemy.Column(sqlalchemy.String, default=False)  # наличие орнамента
     colour = sqlalchemy.Column(sqlalchemy.String, default=False)
-    shape = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    shape = sqlalchemy.Column(sqlalchemy.String, nullable=True)  # форма керамики
     size = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    deadline = sqlalchemy.Column(sqlalchemy.Date)
+    deadline = sqlalchemy.Column(sqlalchemy.Date)  # дата сдачи заказа
     comment = sqlalchemy.Column(sqlalchemy.String)
     made_date = sqlalchemy.Column(sqlalchemy.Date, default=datetime.datetime.now)  # дата заказа
     user = orm.relationship('User')

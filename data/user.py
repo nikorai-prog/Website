@@ -9,6 +9,7 @@ from flask_login import UserMixin
 class User(SqlAlchemyBase, UserMixin):
     __tablename__ = 'users'
 
+    # данные пользователя
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     surname = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
@@ -19,7 +20,7 @@ class User(SqlAlchemyBase, UserMixin):
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                      default=datetime.datetime.now)
-    purchase = orm.relationship("Purchase", back_populates='user')
+    purchase = orm.relationship("Purchase", back_populates='user')  # соединение с таблицей покупок
 
     def __repr__(self):
         return f'<User> {self.id} {self.surname} {self.name}'
